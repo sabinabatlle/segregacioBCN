@@ -1,5 +1,5 @@
 # segregacioBCN
-Visualització de la segregació per barris a la ciutat de Barcelona
+Visualització de la segregació urbana als barris de la ciutat de Barcelona.
 
 ## Objectiu
 L'objectiu de la visualització és posar en relleu la segregació urbana als barris de Barcelona. El dataviz permet interactuar amb un seguit de característiques sociodemogràfiques per veure com es distribueixen els grups de població en la superfície urbana.
