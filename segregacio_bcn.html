@@ -1,0 +1,3339 @@
+<!DOCTYPE html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style>
+    .titol {
+        padding: 10px 20px 0 20px;
+    }
+    .container1 {
+         display: flex;
+         justify-content: space-between;
+         padding: 20px;
+     }
+    .container {
+        display: flex;
+        justify-content: space-evenly;
+        height: 50px;
+    }
+    .container2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    h0 {
+        padding-top: 20px;
+        font-family:arial;
+        font-size: 40px;
+        color:#b2473e;
+    }
+    h1 {
+        padding-top: 15px;
+        padding-bottom: 0px;
+        font-family:arial;
+        font-size: 20px;
+        color:#211f30;
+    }
+    h2 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-family:arial;
+        font-size: 20px;
+        color:#d4dde1;
+    }
+    p1 {
+        font-family:arial;
+        font-size: 14px;
+        padding: 0;
+    }
+    p {
+        font-family:arial;
+        font-size: 14px;
+        padding: 0;
+        color:#d4dde1;
+    }
+    light {
+        color:#d4dde1;
+    }
+    dark {
+        color: #32384d;
+    }
+    p2 {
+        font-family:arial;
+        color:#d4dde1;
+        font-size: 12px;
+        padding: 0;
+    }
+    .item1{
+        flex-grow: 2;
+        order: 1;
+        background-color: #e5e5e5;
+        /*#e2e8e4*/
+        border-radius: 4px;
+        padding: 10px 40px 20px 40px;
+    }
+    .item2 {
+        flex-grow: 4;
+        order: 2;
+    }
+    .item3 {
+        flex-grow: 1;
+        order: 3;
+        background-color: #32384d;
+        padding: 10px;
+        width: 220px;
+        height: 160px;
+        border-radius: 4px;
+    }
+    .item4 {
+        flex-grow: 1;
+        order: 99;
+        padding-top: 500px;
+    }
+    .info {
+        text-align: center;
+    }
+    .barris {
+        stroke: #fff;
+        stroke-width:2px;
+    }
+    .barris:hover {
+        fill: #b2473e;
+        /*stroke: #3a3a3a;*/
+        /*stroke-width:4px;*/
+    }
+    .pintats:hover {
+        fill: #e5e5e5;
+    }
+    .button {
+        background-color: #32384d;
+        stroke: #fff;
+        stroke-width: 4px;
+        border-radius: 6px;
+        padding: 5px;
+        flex-grow: 1;
+        /*margin-left: 5px;*/
+        /*margin-right: 5px;*/
+    }
+    .button:hover {
+        background-color: #b2473e
+        /*#e29930*/
+    }
+    .buttonVermell {
+        background-color: #600902;
+        stroke: #fff;
+        stroke-width: 4px;
+        border-radius: 6px;
+        padding: 5px 35px 5px 35px;
+        flex-grow:1;
+    }
+    .selected {
+        background-color: #600902;
+    }
+    .circle {
+        border-radius:40px;
+        height: 40px;
+        width: 40px;
+        background-color:  #600902;
+        padding: 10px;
+        color:  #e5e5e5;
+        font-family: arial;
+        /*order: 99;*/
+        /*text-align: center;*/
+        font-size: 30px;
+    }
+
+    .slidecontainer {
+        width: 100%;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 25px;
+        background: #e5e5e5;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #600902;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #600902;
+        cursor: pointer;
+    }
+    .a {
+        color: #600902;
+    }
+    .centered{
+        margin: auto;
+    }
+
+</style>
+<body>
+<div class="titol">
+    <h0><b>On viu la gent com tu?</b></h0>
+    <h1>Hi ha <a style="color: #D6736B; text-decoration: none" href="#segregacio">segregació urbana</a> als barris de Barcelona? Juga amb les diferents opcions i descobreix-ho.</h1>
+</div>
+<div class="container1">
+<div id="variables" class="item1">
+    <div id="q1">
+        <h1>Sexe</h1>
+        <div onchange="onChangeInput(value)" class="container">
+            <button id="h" class="button n dona" style="padding: 0px" onclick="clickNo('dona')">
+                <p2 class="light">Home</p2>
+            </button>
+            <button id="d" class="button s dona" style="padding: 0px" onclick="clickSi('dona')">
+                <p2 class="light">Dona</p2>
+            </button>
+        </div>
+    </div>
+    <div id="q2">
+        <h1>Feina</h1>
+        <div class="container">
+            <button id="s" class="button s atur" style="padding: 0px" onclick="clickSi('atur')">
+                <p2 class="light">A l'atur</p2>
+            </button>
+            <button id="n" class="button n atur" style="padding: 0px" onclick="clickNo('atur')">
+                <p2 class="light">Treballant</p2>
+            </button>
+        </div>
+    </div>
+    <div id="q3">
+        <h1>Nacionalitat</h1>
+        <div class="container">
+            <button id="n" class="button n imm" style="padding: 0px" onclick="clickNo('imm')">
+                <p2 class="light">Espanyola</p2>
+            </button>
+            <button class="button s imm" style="padding: 0px" onclick="clickSi('imm')">
+                <p2 class="light">Altres</p2>
+            </button>
+        </div>
+    </div>
+    <div id="q4">
+        <h1>Nivell d'estudis</h1>
+        <div class="container2">
+            <button id="0" class="button n0 edu" style="padding: 10px" onclick="clickEdu(0)">
+                <p2>Sense estudis</p2>
+            </button>
+            <button id="1" class="button n1 edu" style="padding: 10px" onclick="clickEdu(1)">
+                <p2>Estudis primaris
+                    certificat d'escolaritat
+                    EGB</p2>
+            </button>
+            <button id="2" class="button n2 edu" style="padding: 10px" onclick="clickEdu(2)">
+                <p2>Batxillerat elemental
+                    graduat escolar
+                    ESO / FPI</p2>
+            </button>
+            <button id="3" class="button n3 edu" style="padding: 10px" onclick="clickEdu(3)">
+                <p2>Batxillerat superior
+                    BUP / COU / FPII
+                    CFGM grau mitjà</p2>
+            </button>
+            <button id="4" class="button n4 edu" style="padding: 10px" onclick="clickEdu(4)">
+                <p2>Estudis universitaris
+                    CFGS grau superior</p2>
+            </button>
+        </div>
+        <!--<div class="slidecontainer">-->
+            <!--<h1>Edat:</h1>-->
+            <!--<input type="range" min="1" max="100" value="50" class="slider" id="myRange">-->
+        <!--</div>-->
+    </div>
+    <div>
+    <h1></h1>
+    <button class="buttonVermell button" onclick="netejar(opcions)">
+        <p class="light">Neteja per tornar a començar</p>
+    </button>
+</div>
+</div>
+<div class="item2" id="mapa">
+</div>
+    <div class="item3 container2">
+        <div class="info">
+            <div>
+                <h2>Informació bàsica</h2>
+                <div style="height: 30px"><p class="light"><b id="name"></b></p></div>
+                <p class="light" id="num"></p>
+                <!--<p class="light" id="val"></p>-->
+            </div>
+        </div>
+        <!--<div class="item4">-->
+            <!--<button class="circle" onclick="mesInfo()">-->
+                <!--<b>+</b>-->
+            <!--</button>-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="container1">
+    <div class="item1">
+        <h1 id="segregacio">Què és la segregació urbana?</h1>
+        <p1 class="dark">
+            La <a href="https://pemb.cat/public/docs/41_lc_12.pdf" style="color: #600902;  text-decoration: none"><b>segregació urbana</b></a> és la tendència de la població en aplegar-se segons les seves característiques socials i demogràfiques, cosa que dona com a resultat la física de grups socials, en diferents barris o àrees de residència. Es tracta d'una combinació entre disparitat social i geogràfica, que pot dur a la creació de veritables ghettos.
+
+        La segregació pot tenir origens ètnics, religiosos, econòmics, professionals, demogràfics o estar relacionada amb el nivell d'educació; les diverses forces juguen papers més o menys importants segons el context, i donen com a resultat un fenomen complex.
+
+        Es considera un dels principals reptes de l'urbanisme actual, ja que sol augmentar encara més la fractura i la desigualtat social. Les seves conseqüències poden afectar diversos aspectes de la qualitat de vida d'alguns grups concrets de la població urbana, com l'accés a infraestructures i serveis.
+            </p1>
+    </div>
+    <div class="item1">
+        <h1>Com hem calculat les dades?</h1>
+        <p1 class="dark">
+            Les dades representades provenen del <a href="http://opendata-ajuntament.barcelona.cat/" style="color: #600902;  text-decoration: none"><b>servei de dades obertes de l'Ajuntament de Barcelona</b></a>. Les dades corresponen a l'any 2017 i provenen en la seva majoria del padró municipal.
+
+            Tenint en compte les opcions seleccionades per l'usuari, el mapa representa els barris de la ciutat en quatre colors diferents, que corresponen a la probabilitat que una persona amb les característiques seleccionades visqui en aquell barri concret. El resultat es calcula seguint el <a href="https://ca.wikipedia.org/wiki/Teorema_de_Bayes" style="color: #600902;  text-decoration: none"><b>teorema de Bayes</b></a>, que té en compte la incidència d'aquest grup de característiques en la població del barri, la incidència en la població total de la ciutat i el percentatge de població de Barcelona que representa el barri. L'escala de colors, de més fort a més clar, representa la distribució dels barris segons aquesta possibilitat, és a dir, com més fos és representat un barri més probabilitats hi ha que hi visqui una persona amb les característiques seleccionades.
+        </p1>
+    </div>
+</div>
+<footer style="font-family: arial; font-size: 10px; color:#32384d; text-align: right; padding-right:20px; padding-bottom: 20px">
+    Sabina Batlle Baró, 2018
+</footer>
+
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<!--<script src="https://d3js.org/geojson.v1.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.2.3/math.min.js"></script>
+<script src="https://cdn.rawgit.com/martgnz/bcn-geodata/master/barris/barris_geo.json"></script>
+
+<script>
+
+    var dataMapa = {};
+    var opcions = {};
+    console.log(opcions);
+
+    var width = 750,
+        height = 750;
+
+    var svg = d3.select("#mapa").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("margin", "auto");
+
+    $("svg").addClass("centered");
+
+    var projection = d3.geo.albers()
+        .center([2.137, 41.395])
+        .rotate([0, 0])
+        .parallels([41, 42])
+        .scale(280000)
+        .translate([width / 2, height / 2]);
+
+    var path = d3.geo.path()
+        .projection(projection);
+
+    // QUESTIONS
+    function netejar(myObject) {
+        $("svg").html("");
+
+        d3.json("https://cdn.rawgit.com/martgnz/bcn-geodata/master/barris/barris_geo.json" , function(error, bcn) {
+
+            svg.selectAll('.barris')
+                .data(bcn.features)
+                .enter()
+                .append('path')
+                .attr('class', 'barris')
+                .attr('d', path)
+                .attr("fill", "#e5e5e5")
+                .on('mouseover', function(d) {
+                    var name = d.properties.N_Barri;
+                    var homes = d.properties.Homes;
+                    var dones = d.properties.Dones;
+                    var p = homes + dones;
+                    var pob = "Població: " + p + " habitants";
+                    var a = document.getElementById('name').innerHTML = name;
+                    var b = document.getElementById('num').innerHTML = pob;
+                    return [a, b];
+                });
+        });
+        $(`.button`).removeClass("selected");
+        for (var member in myObject) delete myObject[member];
+        var myObject = {};
+        console.log(myObject);
+        return myObject;
+    }
+    opcions = netejar(opcions);
+
+    // function mesInfo() {
+    //
+    // }
+
+    //SLIDER
+    // var slider = document.getElementById("myRange");
+    // var output = document.getElementById("demo");
+    // output.innerHTML = slider.value; // Display the default slider value
+    //
+    // // Update the current slider value (each time you drag the slider handle)
+    // slider.oninput = function() {
+    //     output.innerHTML = this.value;
+    //     opcions.c5 = this.value;
+    //     computeData(opcions);
+    // };
+
+    function clickSi(preg) {
+        if (preg == "atur") {
+            opcions.c2 = "aturS";
+        }
+        else if (preg=="imm") {
+            opcions.c3 = "immS";
+        }
+        else if (preg=="dona") {
+            opcions.c1 = "donaS";
+        }
+        $(`.s.${preg} `).addClass("selected");
+        $(`.s.${preg} `).siblings().removeClass("selected");
+        console.log(opcions);
+        computeData(opcions);
+    }
+
+    function clickNo(preg) {
+        if (preg == "atur") {
+            opcions.c2 = "aturN";
+        }
+        else if (preg=="imm") {
+            opcions.c3 = "immN";
+
+        }
+        else if (preg=="dona") {
+            opcions.c1 = "donaN";
+        }
+        $(`.n.${preg} `).addClass("selected");
+        $(`.n.${preg} `).siblings().removeClass("selected");
+        console.log(opcions);
+        computeData(opcions);
+    }
+
+    function clickEdu(nivell) {
+        var nomNivell = ['edu', nivell].join("");
+        opcions.c4 = nomNivell;
+        $(`.n${nivell}.edu`).addClass("selected");
+        $(`.n${nivell}.edu`).siblings().removeClass("selected");
+        console.log(opcions);
+        computeData(opcions);
+    }
+
+    // machine
+    var dades = {
+        "home" : {
+            "0": {
+                "donaN": 47.6693575678082,
+                    "barcelona": 1.36986301410959,
+                    "aturS": 4.20587409332943,
+                    "aturN": 95.7941259066706,
+                    "edu0": 1.53749808094921,
+                    "edu2": 21.3194795038392,
+                    "edu3": 22.1402666253761,
+                    "edu1": 15.5314016210737,
+                    "edu4": 23.3841839939379,
+                    "immS": 5.84497950808673,
+                    "immN": 94.1550204919133
+            },
+            "1": {
+                "donaN": 54.85816995,
+                    "barcelona": 2.98511053,
+                    "aturS": 6.48890897450382,
+                    "aturN": 93.5110910254962,
+                    "edu0": 0.88502240801416,
+                    "edu2": 21.0371709411366,
+                    "edu3": 15.3052385794449,
+                    "edu1": 25.5903287764094,
+                    "edu4": 19.500621398712,
+                    "immS": 11.5354197265846,
+                    "immN": 88.4645802734154
+            },
+            "2": {
+                "donaN": 52.7084908,
+                    "barcelona": 0.9791049,
+                    "aturS": 5.49713193116635,
+                    "aturN": 94.5028680688337,
+                    "edu0": 1.0038240917782,
+                    "edu2": 21.4627151051625,
+                    "edu3": 21.8690248565966,
+                    "edu1": 21.3551625239006,
+                    "edu4": 33.8193116634799,
+                    "immS": 17.9134799235182,
+                    "immN": 82.0865200764818
+            },
+            "3": {
+                "donaN": 49.83565606,
+                    "barcelona": 0.93815469,
+                    "aturS": 6.25247328848437,
+                    "aturN": 93.7475267115156,
+                    "edu0": 1.74119509299565,
+                    "edu2": 23.0444532383591,
+                    "edu3": 19.878643978367,
+                    "edu1": 19.482917820868,
+                    "edu4": 23.4401793958581,
+                    "immS": 12.0036934441367,
+                    "immN": 87.9963065558633
+            },
+            "4": {
+                "donaN": 50.16625831,
+                    "barcelona": 1.40957557,
+                    "aturS": 5.69509855224141,
+                    "aturN": 94.3049014477586,
+                    "edu0": 0.811093668236525,
+                    "edu2": 16.7974882260597,
+                    "edu3": 19.7714983429269,
+                    "edu1": 15.9602302459445,
+                    "edu4": 33.4031048316763,
+                    "immS": 12.5414268271411,
+                    "immN": 87.4585731728589
+            },
+            "5": {
+                "donaN": 47.05127804,
+                    "barcelona": 1.9712226,
+                    "aturS": 3.39118292439657,
+                    "aturN": 96.6088170756034,
+                    "edu0": 0.718132854578097,
+                    "edu2": 16.2710286588204,
+                    "edu3": 25.7197951991489,
+                    "edu1": 9.82778110246692,
+                    "edu4": 33.266839550502,
+                    "immS": 7.19462730234723,
+                    "immN": 92.8053726976528
+            },
+            "6": {
+                "donaN": 45.88264921,
+                    "barcelona": 3.18369441,
+                    "aturS": 3.44085113569197,
+                    "aturN": 96.559148864308,
+                    "edu0": 0.958372034112978,
+                    "edu2": 17.2211432913958,
+                    "edu3": 25.5045174364604,
+                    "edu1": 9.84970024487039,
+                    "edu4": 32.6015367727772,
+                    "immS": 7.14768217512455,
+                    "immN": 92.8523178248755
+            },
+            "7": {
+                "donaN": 46.00627358,
+                    "barcelona": 2.71319861,
+                    "aturS": 2.69762845849802,
+                    "aturN": 97.302371541502,
+                    "edu0": 0.276679841897233,
+                    "edu2": 11.2302371541502,
+                    "edu3": 23.1225296442688,
+                    "edu1": 5.27173913043478,
+                    "edu4": 45.5385375494071,
+                    "immS": 7.62351778656127,
+                    "immN": 92.3764822134387
+            },
+            "8": {
+                "donaN": 46.0947321,
+                    "barcelona": 2.60015381,
+                    "aturS": 3.36009056293095,
+                    "aturN": 96.6399094370691,
+                    "edu0": 0.504270865493465,
+                    "edu2": 12.5347329422661,
+                    "edu3": 25.5377174024905,
+                    "edu1": 6.18503653390964,
+                    "edu4": 42.8475867037151,
+                    "immS": 8.71153648245343,
+                    "immN": 91.2884635175466
+            },
+            "9": {
+                "donaN": 46.43789503,
+                    "barcelona": 3.59079138,
+                    "aturS": 3.35453805754864,
+                    "aturN": 96.6454619424514,
+                    "edu0": 0.599156742362601,
+                    "edu2": 14.3760633182928,
+                    "edu3": 25.4456690583623,
+                    "edu1": 7.86670611731637,
+                    "edu4": 37.953990679784,
+                    "immS": 7.12700643538723,
+                    "immN": 92.8729935646128
+            },
+            "10": {
+                "donaN": 47.08662235,
+                    "barcelona": 2.37511263,
+                    "aturS": 3.76640564685122,
+                    "aturN": 96.2335943531488,
+                    "edu0": 0.898864012352487,
+                    "edu2": 17.6905260835999,
+                    "edu3": 25.3170839307378,
+                    "edu1": 11.1944413808316,
+                    "edu4": 31.9896327340907,
+                    "immS": 6.90967243851329,
+                    "immN": 93.0903275614867
+            },
+            "11": {
+                "donaN": 49.413289,
+                    "barcelona": 2.52275543,
+                    "aturS": 5.02152080344333,
+                    "aturN": 94.9784791965567,
+                    "edu0": 1.10819769455301,
+                    "edu2": 21.4812249542374,
+                    "edu3": 20.3532380151388,
+                    "edu1": 19.0966209864938,
+                    "edu4": 20.5362885271855,
+                    "immS": 7.8909612625538,
+                    "immN": 92.1090387374462
+            },
+            "12": {
+                "donaN": 50.7029877,
+                    "barcelona": 0.07018275,
+                    "aturS": 8.66551126516464,
+                    "aturN": 91.3344887348354,
+                    "edu0": 2.4263431542461,
+                    "edu2": 34.6620450606586,
+                    "edu3": 10.9185441941075,
+                    "edu1": 34.8353552859619,
+                    "edu4": 4.67937608318891,
+                    "immS": 2.94627383015598,
+                    "immN": 97.053726169844
+            },
+            "13": {
+                "donaN": 48.32179533,
+                    "barcelona": 1.87970133,
+                    "aturS": 4.54915806626833,
+                    "aturN": 95.4508419337317,
+                    "edu0": 1.85361216730038,
+                    "edu2": 25.6042911461162,
+                    "edu3": 21.0415535035307,
+                    "edu1": 22.1414991852254,
+                    "edu4": 11.4951113525258,
+                    "immS": 4.91580662683324,
+                    "immN": 95.0841933731668
+            },
+            "14": {
+                "donaN": 47.09474287,
+                    "barcelona": 0.64638439,
+                    "aturS": 5.14586709886548,
+                    "aturN": 94.8541329011345,
+                    "edu0": 1.5194489465154,
+                    "edu2": 20.2188006482982,
+                    "edu3": 24.6961102106969,
+                    "edu1": 13.452188006483,
+                    "edu4": 25.7293354943274,
+                    "immS": 7.11102106969206,
+                    "immN": 92.8889789303079
+            },
+            "15": {
+                "donaN": 48.07571769,
+                    "barcelona": 0.98391532,
+                    "aturS": 3.76792698826597,
+                    "aturN": 96.232073011734,
+                    "edu0": 1.251629726206,
+                    "edu2": 20.0391134289439,
+                    "edu3": 22.477183833116,
+                    "edu1": 15.9322033898305,
+                    "edu4": 25.6584093872229,
+                    "immS": 7.61408083441982,
+                    "immN": 92.3859191655802
+            },
+            "16": {
+                "donaN": 47.21967036,
+                    "barcelona": 1.14124063,
+                    "aturS": 3.87960631723507,
+                    "aturN": 96.120393682765,
+                    "edu0": 1.63653009842069,
+                    "edu2": 23.8956282902266,
+                    "edu3": 25.7381551842527,
+                    "edu1": 15.9533073929961,
+                    "edu4": 19.3980315861753,
+                    "immS": 5.39024948500801,
+                    "immN": 94.609750514992
+            },
+            "17": {
+                "donaN": 46.88629642,
+                    "barcelona": 1.50134352,
+                    "aturS": 3.20658840021027,
+                    "aturN": 96.7934115997897,
+                    "edu0": 1.69090590502891,
+                    "edu2": 21.3684948309094,
+                    "edu3": 23.4098475556334,
+                    "edu1": 16.4009111617312,
+                    "edu4": 21.4648677063256,
+                    "immS": 6.15910285614158,
+                    "immN": 93.8408971438584
+            },
+            "18": {
+                "donaN": 47.44511413,
+                    "barcelona": 2.54785594,
+                    "aturS": 3.54063568185297,
+                    "aturN": 96.459364318147,
+                    "edu0": 1.24483444722208,
+                    "edu2": 19.7387888373042,
+                    "edu3": 24.0242844752819,
+                    "edu1": 13.2901382582521,
+                    "edu4": 26.5496658333758,
+                    "immS": 7.17820519361257,
+                    "immN": 92.8217948063874
+            },
+            "19": {
+                "donaN": 46.49659571,
+                    "barcelona": 2.86232154,
+                    "aturS": 3.27618164967563,
+                    "aturN": 96.7238183503244,
+                    "edu0": 0.67191844300278,
+                    "edu2": 12.9749768303985,
+                    "edu3": 24.7312326227989,
+                    "edu1": 7.15940685820204,
+                    "edu4": 38.1093605189991,
+                    "immS": 4.88415199258573,
+                    "immN": 95.1158480074143
+            },
+            "20": {
+                "donaN": 46.76614847,
+                    "barcelona": 1.48370533,
+                    "aturS": 3.21749177850858,
+                    "aturN": 96.7825082214914,
+                    "edu0": 1.11990045329304,
+                    "edu2": 14.7986845613723,
+                    "edu3": 24.2111812283353,
+                    "edu1": 9.38583237045596,
+                    "edu4": 33.7658874766687,
+                    "immS": 5.4039640920807,
+                    "immN": 94.5960359079193
+            },
+            "21": {
+                "donaN": 46.61016949,
+                    "barcelona": 0.72772977,
+                    "aturS": 1.56363636363636,
+                    "aturN": 98.4363636363636,
+                    "edu0": 0.181818181818182,
+                    "edu2": 8.30909090909091,
+                    "edu3": 21.2363636363636,
+                    "edu1": 3,
+                    "edu4": 48.6363636363636,
+                    "immS": 6.67272727272727,
+                    "immN": 93.3272727272727
+            },
+            "22": {
+                "donaN": 48.62837548,
+                    "barcelona": 0.28776162,
+                    "aturS": 1.93918025561922,
+                    "aturN": 98.0608197443808,
+                    "edu0": 0.440722785368004,
+                    "edu2": 14.4997796386073,
+                    "edu3": 23.3583076245042,
+                    "edu1": 7.27192595857206,
+                    "edu4": 32.7016306743059,
+                    "immS": 3.92243278977523,
+                    "immN": 96.0775672102248
+            },
+            "23": {
+                "donaN": 46.5449857,
+                    "barcelona": 1.53063773,
+                    "aturS": 1.73995844875346,
+                    "aturN": 98.2600415512465,
+                    "edu0": 0.328947368421053,
+                    "edu2": 9.35768698060942,
+                    "edu3": 21.5114265927978,
+                    "edu1": 4.37153739612188,
+                    "edu4": 41.845567867036,
+                    "immS": 5.24584487534626,
+                    "immN": 94.7541551246537
+            },
+            "24": {
+                "donaN": 46.70941205,
+                    "barcelona": 1.01956175,
+                    "aturS": 2.2015022015022,
+                    "aturN": 97.7984977984978,
+                    "edu0": 0.142450142450142,
+                    "edu2": 7.21315721315721,
+                    "edu3": 21.976171976172,
+                    "edu1": 2.40870240870241,
+                    "edu4": 45.2343952343952,
+                    "immS": 4.36415436415436,
+                    "immN": 95.6358456358456
+            },
+            "25": {
+                "donaN": 46.05067647,
+                    "barcelona": 1.5772001,
+                    "aturS": 1.96145028445275,
+                    "aturN": 98.0385497155472,
+                    "edu0": 0.127366901587841,
+                    "edu2": 8.76284282924344,
+                    "edu3": 23.9195041181965,
+                    "edu1": 3.7021312728199,
+                    "edu4": 43.2283263989131,
+                    "immS": 4.50878831620956,
+                    "immN": 95.4912116837904
+            },
+            "26": {
+                "donaN": 45.06727887,
+                    "barcelona": 2.90123659,
+                    "aturS": 1.97632187160983,
+                    "aturN": 98.0236781283902,
+                    "edu0": 0.160369793877647,
+                    "edu2": 8.44771473043724,
+                    "edu3": 22.9753313522947,
+                    "edu1": 2.98099146266686,
+                    "edu4": 46.7336446394038,
+                    "immS": 5.15070043865855,
+                    "immN": 94.8492995613414
+            },
+            "27": {
+                "donaN": 45.35145843,
+                    "barcelona": 1.80563325,
+                    "aturS": 2.95978309986444,
+                    "aturN": 97.0402169001356,
+                    "edu0": 0.316312697695436,
+                    "edu2": 10.1521313450821,
+                    "edu3": 24.8606717879199,
+                    "edu1": 3.72043982527489,
+                    "edu4": 43.5909022443139,
+                    "immS": 5.52040970025606,
+                    "immN": 94.4795902997439
+            },
+            "28": {
+                "donaN": 46.33613769,
+                    "barcelona": 0.96029494,
+                    "aturS": 3.64518364518364,
+                    "aturN": 96.3548163548164,
+                    "edu0": 0.956340956340956,
+                    "edu2": 16.2716562716563,
+                    "edu3": 24.9203049203049,
+                    "edu1": 7.85862785862786,
+                    "edu4": 33.5135135135135,
+                    "immS": 4.92030492030492,
+                    "immN": 95.0796950796951
+            },
+            "29": {
+                "donaN": 47.04520697,
+                    "barcelona": 0.45291928,
+                    "aturS": 3.1548480463097,
+                    "aturN": 96.8451519536903,
+                    "edu0": 1.47612156295224,
+                    "edu2": 19.5947901591896,
+                    "edu3": 24.3994211287988,
+                    "edu1": 12.4457308248915,
+                    "edu4": 24.602026049204,
+                    "immS": 4.80463096960926,
+                    "immN": 95.1953690303907
+            },
+            "30": {
+                "donaN": 45.77163046,
+                    "barcelona": 0.82042281,
+                    "aturS": 3.58022663820003,
+                    "aturN": 96.4197733618,
+                    "edu0": 0.70619149285597,
+                    "edu2": 14.7643291180818,
+                    "edu3": 25.7513549022828,
+                    "edu1": 8.70422072589916,
+                    "edu4": 34.0121530629003,
+                    "immS": 6.27360814583676,
+                    "immN": 93.7263918541632
+            },
+            "31": {
+                "donaN": 45.34244423,
+                    "barcelona": 3.14083236,
+                    "aturS": 3.54235232981119,
+                    "aturN": 96.4576476701888,
+                    "edu0": 0.744846700155898,
+                    "edu2": 14.0914602459726,
+                    "edu3": 23.7744673479993,
+                    "edu1": 9.06807552399099,
+                    "edu4": 36.6230729256885,
+                    "immS": 7.02840810670362,
+                    "immN": 92.9715918932964
+            },
+            "32": {
+                "donaN": 45.87262778,
+                    "barcelona": 2.11880374,
+                    "aturS": 3.38197969543147,
+                    "aturN": 96.6180203045685,
+                    "edu0": 0.780456852791878,
+                    "edu2": 15.6472081218274,
+                    "edu3": 26.1865482233503,
+                    "edu1": 7.88705583756345,
+                    "edu4": 34.9682741116751,
+                    "immS": 5.28553299492386,
+                    "immN": 94.7144670050762
+            },
+            "33": {
+                "donaN": 46.06846231,
+                    "barcelona": 1.58904113,
+                    "aturS": 3.45408593091828,
+                    "aturN": 96.5459140690817,
+                    "edu0": 1.3647851727043,
+                    "edu2": 19.6461668070767,
+                    "edu3": 26.4869418702612,
+                    "edu1": 10.530749789385,
+                    "edu4": 27.379949452401,
+                    "immS": 5.22325189553496,
+                    "immN": 94.7767481044651
+            },
+            "34": {
+                "donaN": 46.85919766,
+                    "barcelona": 0.54881926,
+                    "aturS": 3.7410071942446,
+                    "aturN": 96.2589928057554,
+                    "edu0": 1.63069544364508,
+                    "edu2": 22.757793764988,
+                    "edu3": 24.5563549160671,
+                    "edu1": 15.6115107913669,
+                    "edu4": 22.6858513189448,
+                    "immS": 5.75539568345324,
+                    "immN": 94.2446043165468
+            },
+            "35": {
+                "donaN": 46.37548276,
+                    "barcelona": 2.21963748,
+                    "aturS": 3.96021808160086,
+                    "aturN": 96.0397819183991,
+                    "edu0": 1.19825055419088,
+                    "edu2": 20.9394284344857,
+                    "edu3": 27.6676052962674,
+                    "edu1": 11.8686717392607,
+                    "edu4": 25.2471391768019,
+                    "immS": 5.23635492181415,
+                    "immN": 94.7636450781858
+            },
+            "36": {
+                "donaN": 47.41714887,
+                    "barcelona": 0.5861925,
+                    "aturS": 4.61504326603062,
+                    "aturN": 95.3849567339694,
+                    "edu0": 0.954071444419792,
+                    "edu2": 20.2351897049035,
+                    "edu3": 26.2702462835589,
+                    "edu1": 9.38540048812958,
+                    "edu4": 25.3605502551586,
+                    "immS": 2.68471266918127,
+                    "immN": 97.3152873308187
+            },
+            "37": {
+                "donaN": 48.06707911,
+                    "barcelona": 1.96382196,
+                    "aturS": 4.63217039069646,
+                    "aturN": 95.3678296093035,
+                    "edu0": 3.1686920162028,
+                    "edu2": 29.2238337906703,
+                    "edu3": 18.8226839148047,
+                    "edu1": 21.3772376845681,
+                    "edu4": 9.74781131582386,
+                    "immS": 4.38390173788057,
+                    "immN": 95.6160982621194
+            },
+            "38": {
+                "donaN": 48.39105655,
+                    "barcelona": 0.70336933,
+                    "aturS": 4.02246783837652,
+                    "aturN": 95.9775321616235,
+                    "edu0": 2.51857220510962,
+                    "edu2": 28.1391556441384,
+                    "edu3": 21.6887117231382,
+                    "edu1": 19.67747780395,
+                    "edu4": 13.7524913933684,
+                    "immS": 4.45732922630911,
+                    "immN": 95.5426707736909
+            },
+            "39": {
+                "donaN": 46.85822087,
+                    "barcelona": 0.42498185,
+                    "aturS": 4.21183028801487,
+                    "aturN": 95.7881697119851,
+                    "edu0": 3.3756580984825,
+                    "edu2": 25.9213378755032,
+                    "edu3": 22.3598637349024,
+                    "edu1": 18.9842056364199,
+                    "edu4": 16.9711985134717,
+                    "immS": 6.59646949519975,
+                    "immN": 93.4035305048002
+            },
+            "40": {
+                "donaN": 44.38356164,
+                    "barcelona": 0.31514399,
+                    "aturS": 4.32098765432099,
+                    "aturN": 95.679012345679,
+                    "edu0": 3.26278659611993,
+                    "edu2": 23.1922398589065,
+                    "edu3": 25.6172839506173,
+                    "edu1": 13.8007054673721,
+                    "edu4": 19.620811287478,
+                    "immS": 5.68783068783069,
+                    "immN": 94.3121693121693
+            },
+            "41": {
+                "donaN": 47.48582922,
+                    "barcelona": 0.33728425,
+                    "aturS": 4.04312668463612,
+                    "aturN": 95.9568733153639,
+                    "edu0": 1.50173276857913,
+                    "edu2": 21.4093184443589,
+                    "edu3": 27.262225644975,
+                    "edu1": 13.5155949172122,
+                    "edu4": 24.6823257604929,
+                    "immS": 3.54254909510974,
+                    "immN": 96.4574509048903
+            },
+            "42": {
+                "donaN": 50.27932961,
+                    "barcelona": 0.03311787,
+                    "aturS": 2.59259259259259,
+                    "aturN": 97.4074074074074,
+                    "edu0": 2.96296296296296,
+                    "edu2": 29.2592592592593,
+                    "edu3": 25.1851851851852,
+                    "edu1": 20.7407407407407,
+                    "edu4": 23.3333333333333,
+                    "immS": 6.66666666666667,
+                    "immN": 93.3333333333333
+            },
+            "43": {
+                "donaN": 47.19598141,
+                    "barcelona": 1.64516266,
+                    "aturS": 4.54328832406672,
+                    "aturN": 95.4567116759333,
+                    "edu0": 2.18427323272438,
+                    "edu2": 22.3749007148531,
+                    "edu3": 24.2096902303415,
+                    "edu1": 16.8149324861001,
+                    "edu4": 17.7124702144559,
+                    "immS": 4.13820492454329,
+                    "immN": 95.8617950754567
+            },
+            "44": {
+                "donaN": 45.94034635,
+                    "barcelona": 1.57763181,
+                    "aturS": 4.40776038121171,
+                    "aturN": 95.5922396187883,
+                    "edu0": 2.01667801225323,
+                    "edu2": 24.0299523485364,
+                    "edu3": 25.6041524846835,
+                    "edu1": 15.3675970047651,
+                    "edu4": 17.7586793737236,
+                    "immS": 4.33117767188564,
+                    "immN": 95.6688223281144
+            },
+            "45": {
+                "donaN": 46.97610145,
+                    "barcelona": 1.51737825,
+                    "aturS": 4.36926803945319,
+                    "aturN": 95.6307319605468,
+                    "edu0": 2.95898944454058,
+                    "edu2": 26.250216300398,
+                    "edu3": 23.4902232220107,
+                    "edu1": 20.1505450770029,
+                    "edu4": 13.6182730576224,
+                    "immS": 5.59785430005191,
+                    "immN": 94.4021456999481
+            },
+            "46": {
+                "donaN": 45.87244439,
+                    "barcelona": 0.95924652,
+                    "aturS": 4.52697967764541,
+                    "aturN": 95.4730203223546,
+                    "edu0": 2.92922214435879,
+                    "edu2": 26.2368605466013,
+                    "edu3": 21.5977575332866,
+                    "edu1": 20.6026629292221,
+                    "edu4": 11.3524877365102,
+                    "immS": 5.7323055360897,
+                    "immN": 94.2676944639103
+            },
+            "47": {
+                "donaN": 47.93028322,
+                    "barcelona": 0.14153727,
+                    "aturS": 4.09090909090909,
+                    "aturN": 95.9090909090909,
+                    "edu0": 1.90909090909091,
+                    "edu2": 28.0909090909091,
+                    "edu3": 14.8181818181818,
+                    "edu1": 24.6363636363636,
+                    "edu4": 7.18181818181818,
+                    "immS": 2.36363636363636,
+                    "immN": 97.6363636363636
+            },
+            "48": {
+                "donaN": 46.55047204,
+                    "barcelona": 0.93414601,
+                    "aturS": 5.30421216848674,
+                    "aturN": 94.6957878315133,
+                    "edu0": 2.41100553113034,
+                    "edu2": 26.1381364345483,
+                    "edu3": 23.7696780598497,
+                    "edu1": 17.7137994610694,
+                    "edu4": 14.16820309176,
+                    "immS": 3.09176003403772,
+                    "immN": 96.9082399659623
+            },
+            "49": {
+                "donaN": 47.93506124,
+                    "barcelona": 0.43306089,
+                    "aturS": 5.40701128936423,
+                    "aturN": 94.5929887106358,
+                    "edu0": 2.76292335115865,
+                    "edu2": 29.1740938799762,
+                    "edu3": 17.8550207961973,
+                    "edu1": 23.6482471776589,
+                    "edu4": 8.28877005347594,
+                    "immS": 1.84194890077243,
+                    "immN": 98.1580510992276
+            },
+            "50": {
+                "donaN": 48.63429924,
+                    "barcelona": 0.96411861,
+                    "aturS": 5.19531763777456,
+                    "aturN": 94.8046823622254,
+                    "edu0": 2.76206760489281,
+                    "edu2": 29.6988031040379,
+                    "edu3": 15.1387610153887,
+                    "edu1": 26.9893463106668,
+                    "edu4": 6.62896225174273,
+                    "immS": 5.43206628962252,
+                    "immN": 94.5679337103775
+            },
+            "51": {
+                "donaN": 46.11192452,
+                    "barcelona": 0.75819575,
+                    "aturS": 5.3448579996472,
+                    "aturN": 94.6551420003528,
+                    "edu0": 3.29864173575587,
+                    "edu2": 29.9700123478568,
+                    "edu3": 18.5747045334274,
+                    "edu1": 24.3252778267772,
+                    "edu4": 8.44946198624096,
+                    "immS": 5.38013759040395,
+                    "immN": 94.6198624095961
+            },
+            "52": {
+                "donaN": 47.52994866,
+                    "barcelona": 1.62166563,
+                    "aturS": 4.54472715634502,
+                    "aturN": 95.455272843655,
+                    "edu0": 3.53656585053609,
+                    "edu2": 28.8126100176028,
+                    "edu3": 19.6911505840935,
+                    "edu1": 22.6756281004961,
+                    "edu4": 8.84941590654505,
+                    "immS": 4.56873099695951,
+                    "immN": 95.4312690030405
+            },
+            "53": {
+                "donaN": 47.59673316,
+                    "barcelona": 0.46062828,
+                    "aturS": 7.70745428973277,
+                    "aturN": 92.2925457102672,
+                    "edu0": 1.80028129395218,
+                    "edu2": 30.7454289732771,
+                    "edu3": 15.2461322081575,
+                    "edu1": 25.9634317862166,
+                    "edu4": 5.79465541490858,
+                    "immS": 6.21659634317862,
+                    "immN": 93.7834036568214
+            },
+            "54": {
+                "donaN": 50.31261493,
+                    "barcelona": 0.16768621,
+                    "aturS": 5.55555555555556,
+                    "aturN": 94.4444444444444,
+                    "edu0": 2.04678362573099,
+                    "edu2": 29.6783625730994,
+                    "edu3": 12.719298245614,
+                    "edu1": 30.1900584795322,
+                    "edu4": 6.21345029239766,
+                    "immS": 3.87426900584795,
+                    "immN": 96.125730994152
+            },
+            "55": {
+                "donaN": 49.61832061,
+                    "barcelona": 0.63824368,
+                    "aturS": 7.73125608568647,
+                    "aturN": 92.2687439143135,
+                    "edu0": 2.18111002921129,
+                    "edu2": 30.0681596884129,
+                    "edu3": 13.7682570593963,
+                    "edu1": 28.919182083739,
+                    "edu4": 5.00486854917235,
+                    "immS": 7.9649464459591,
+                    "immN": 92.0350535540409
+            },
+            "56": {
+                "donaN": 48.81305638,
+                    "barcelona": 0.08313388,
+                    "aturS": 6.99088145896657,
+                    "aturN": 93.0091185410334,
+                    "edu0": 2.58358662613982,
+                    "edu2": 31.306990881459,
+                    "edu3": 11.2462006079027,
+                    "edu1": 31.0030395136778,
+                    "edu4": 6.0790273556231,
+                    "immS": 4.7112462006079,
+                    "immN": 95.2887537993921
+            },
+            "57": {
+                "donaN": 52.43343412,
+                    "barcelona": 0.63232317,
+                    "aturS": 6.8452380952381,
+                    "aturN": 93.1547619047619,
+                    "edu0": 2.04613095238095,
+                    "edu2": 27.34375,
+                    "edu3": 14.9553571428571,
+                    "edu1": 26.4508928571429,
+                    "edu4": 5.97098214285714,
+                    "immS": 6.8452380952381,
+                    "immN": 93.1547619047619
+            },
+            "58": {
+                "donaN": 48.68162141,
+                    "barcelona": 0.15670859,
+                    "aturS": 3.71867421180275,
+                    "aturN": 96.2813257881973,
+                    "edu0": 1.69765561843169,
+                    "edu2": 32.0937752627324,
+                    "edu3": 12.9345189975748,
+                    "edu1": 27.3241713823767,
+                    "edu4": 5.01212611156023,
+                    "immS": 3.79951495553759,
+                    "immN": 96.2004850444624
+            },
+            "59": {
+                "donaN": 50.19583268,
+                    "barcelona": 0.78730494,
+                    "aturS": 4.10424469413234,
+                    "aturN": 95.8957553058677,
+                    "edu0": 1.88826466916355,
+                    "edu2": 27.6529338327091,
+                    "edu3": 17.1972534332085,
+                    "edu1": 21.1298377028714,
+                    "edu4": 9.20724094881398,
+                    "immS": 4.79088639200999,
+                    "immN": 95.20911360799
+            },
+            "60": {
+                "donaN": 47.17695097,
+                    "barcelona": 3.50408053,
+                    "aturS": 3.96567804514083,
+                    "aturN": 96.0343219548592,
+                    "edu0": 1.264689423615,
+                    "edu2": 22.7233725051296,
+                    "edu3": 26.6181682521918,
+                    "edu1": 14.2361499720201,
+                    "edu4": 19.4814400298452,
+                    "immS": 3.50307778399552,
+                    "immN": 96.4969222160045
+            },
+            "61": {
+                "donaN": 46.79755612,
+                    "barcelona": 1.79675248,
+                    "aturS": 3.66730233240428,
+                    "aturN": 96.3326976675957,
+                    "edu0": 1.48159014229133,
+                    "edu2": 23.3607158574153,
+                    "edu3": 26.1331964207129,
+                    "edu1": 14.7425553762652,
+                    "edu4": 19.1359835704856,
+                    "immS": 4.71615079947191,
+                    "immN": 95.2838492005281
+            },
+            "62": {
+                "donaN": 45.39933621,
+                    "barcelona": 0.8733374,
+                    "aturS": 3.77974801679888,
+                    "aturN": 96.2202519832011,
+                    "edu0": 1.47767926582672,
+                    "edu2": 23.4717685487634,
+                    "edu3": 26.6604448592316,
+                    "edu1": 13.2213407995023,
+                    "edu4": 20.0186654223052,
+                    "immS": 4.61969202053196,
+                    "immN": 95.380307979468
+            },
+            "63": {
+                "donaN": 46.5206945,
+                    "barcelona": 1.36042297,
+                    "aturS": 3.66400311830053,
+                    "aturN": 96.3359968816995,
+                    "edu0": 1.2570648996297,
+                    "edu2": 21.9450399532255,
+                    "edu3": 27.1097251997661,
+                    "edu1": 12.6486065094523,
+                    "edu4": 22.8123172870785,
+                    "immS": 4.88208926135256,
+                    "immN": 95.1179107386474
+            },
+            "64": {
+                "donaN": 46.85487865,
+                    "barcelona": 2.36580015,
+                    "aturS": 4.43974630021142,
+                    "aturN": 95.5602536997886,
+                    "edu0": 1.13497273839991,
+                    "edu2": 20.846778680316,
+                    "edu3": 26.666295760543,
+                    "edu1": 12.540336040948,
+                    "edu4": 25.5535773895627,
+                    "immS": 5.98086124401914,
+                    "immN": 94.0191387559809
+            },
+            "65": {
+                "donaN": 48.07508281,
+                    "barcelona": 1.67562864,
+                    "aturS": 4.07288317256163,
+                    "aturN": 95.9271168274384,
+                    "edu0": 1.15602511100903,
+                    "edu2": 21.9951002909202,
+                    "edu3": 25.1799111927729,
+                    "edu1": 13.0837544020824,
+                    "edu4": 22.0104118817945,
+                    "immS": 4.98392282958199,
+                    "immN": 95.016077170418
+            },
+            "66": {
+                "donaN": 48.36789298,
+                    "barcelona": 0.92199662,
+                    "aturS": 3.52648319734477,
+                    "aturN": 96.4735168026552,
+                    "edu0": 0.871248789932236,
+                    "edu2": 19.444060295948,
+                    "edu3": 24.4502835015904,
+                    "edu1": 12.6815101645692,
+                    "edu4": 30.3830728806527,
+                    "immS": 6.77637947725073,
+                    "immN": 93.2236205227493
+            },
+            "67": {
+                "donaN": 48.98176778,
+                    "barcelona": 0.57842183,
+                    "aturS": 3.70047888550283,
+                    "aturN": 96.2995211144972,
+                    "edu0": 0.21767522855899,
+                    "edu2": 10.8402263822377,
+                    "edu3": 20.9621245102307,
+                    "edu1": 4.48410970831519,
+                    "edu4": 43.2520679146713,
+                    "immS": 4.13582934262081,
+                    "immN": 95.8641706573792
+            },
+            "68": {
+                "donaN": 48.60888175,
+                    "barcelona": 2.07476992,
+                    "aturS": 3.56509508958601,
+                    "aturN": 96.434904910414,
+                    "edu0": 1.02121934813184,
+                    "edu2": 18.6571271326362,
+                    "edu3": 22.968262704091,
+                    "edu1": 11.6859291873051,
+                    "edu4": 26.3193297865835,
+                    "immS": 5.34458509142053,
+                    "immN": 94.6554149085795
+            },
+            "69": {
+                "donaN": 48.72099941,
+                    "barcelona": 0.82936525,
+                    "aturS": 4.02930402930403,
+                    "aturN": 95.970695970696,
+                    "edu0": 1.23626373626374,
+                    "edu2": 15.7967032967033,
+                    "edu3": 21.4438339438339,
+                    "edu1": 8.6996336996337,
+                    "edu4": 31.2118437118437,
+                    "immS": 5.78449328449328,
+                    "immN": 94.2155067155067
+            },
+            "70": {
+                "donaN": 51.10088587,
+                    "barcelona": 1.43412103,
+                    "aturS": 5.082891525709,
+                    "aturN": 94.917108474291,
+                    "edu0": 2.60876882942018,
+                    "edu2": 27.0722881427249,
+                    "edu3": 16.0986282925187,
+                    "edu1": 28.2083648910208,
+                    "edu4": 8.29756795422032,
+                    "immS": 9.64402928553396,
+                    "immN": 90.355970714466
+            },
+            "71": {
+                "donaN": 48.28622082,
+                    "barcelona": 1.25231193,
+                    "aturS": 4.22233554309026,
+                    "aturN": 95.7776644569097,
+                    "edu0": 1.60122386537481,
+                    "edu2": 24.0489546149923,
+                    "edu3": 23.6104028556859,
+                    "edu1": 15.583885772565,
+                    "edu4": 19.2758796532381,
+                    "immS": 4.78327383987761,
+                    "immN": 95.2167261601224
+                                    },
+                                    "72": {
+                                        "donaN": 46.919377,
+                                            "barcelona": 1.6155601,
+                                            "aturS": 4.71890000813603,
+                                            "aturN": 95.281099991864,
+                                            "edu0": 1.92010414124156,
+                                            "edu2": 25.1728907330567,
+                                            "edu3": 23.9362134895452,
+                                            "edu1": 17.6145146855423,
+                                            "edu4": 15.4340574404035,
+                                            "immS": 4.36091449027744,
+                                            "immN": 95.6390855097226
+                                    },
+                                    "73": {
+                                        "donaN": 47.65794644,
+                                            "barcelona": 1.78929016,
+                                            "aturS": 4.75157300932957,
+                                            "aturN": 95.2484269906704,
+                                            "edu0": 2.75547841180299,
+                                            "edu2": 26.9979026542272,
+                                            "edu3": 21.7256093151081,
+                                            "edu1": 21.3133723873581,
+                                            "edu4": 10.3493165545672,
+                                            "immS": 4.35380053518478,
+                                            "immN": 95.6461994648152
+                                    }
+        },
+        "dona" : {
+                "0": {
+                "donaS": 52.3306424321918,
+                    "barcelona": 1.36986301410959,
+                    "aturS": 4.79441562015169,
+                    "aturN": 95.2055843798483,
+                    "edu0": 3.51785224516688,
+                    "edu2": 19.5566030262104,
+                    "edu3": 19.8555732197664,
+                    "edu1": 17.9431162928532,
+                    "edu4": 25.8372247328974,
+                    "immS": 5.5461064418196,
+                    "immN": 94.4538935581804
+            },
+                "1": {
+                "donaS": 45.14183005,
+                    "barcelona": 2.98511053,
+                    "aturS": 6.31121281464531,
+                    "aturN": 93.6887871853547,
+                    "edu0": 2.5858123569794,
+                    "edu2": 19.3272311212815,
+                    "edu3": 15.8443935926773,
+                    "edu1": 22.7826086956522,
+                    "edu4": 24.7734553775744,
+                    "immS": 10.695652173913,
+                    "immN": 89.304347826087
+            },
+                "2": {
+                "donaS": 47.2915092,
+                    "barcelona": 0.9791049,
+                    "aturS": 5.2477357485349,
+                    "aturN": 94.7522642514651,
+                    "edu0": 2.46403835908364,
+                    "edu2": 15.3835908364411,
+                    "edu3": 21.4970697922216,
+                    "edu1": 14.4512519978689,
+                    "edu4": 41.0761854022376,
+                    "immS": 15.8231220031966,
+                    "immN": 84.1768779968034
+            },
+                "3": {
+                "donaS": 50.16434394,
+                    "barcelona": 0.93815469,
+                    "aturS": 5.89699908268903,
+                    "aturN": 94.103000917311,
+                    "edu0": 4.6258681693094,
+                    "edu2": 19.7877080330232,
+                    "edu3": 17.5468483816014,
+                    "edu1": 19.2504258943782,
+                    "edu4": 27.6503734766086,
+                    "immS": 11.1256716026733,
+                    "immN": 88.8743283973267
+            },
+                "4": {
+                "donaS": 49.83374169,
+                    "barcelona": 1.40957557,
+                    "aturS": 5.48726953467954,
+                    "aturN": 94.5127304653205,
+                    "edu0": 2.56365232660228,
+                    "edu2": 14.0561896400351,
+                    "edu3": 18.6742756804214,
+                    "edu1": 14.793678665496,
+                    "edu4": 38.7532923617208,
+                    "immS": 11.6505706760316,
+                    "immN": 88.3494293239684
+            },
+                "5": {
+                "donaS": 52.94872196,
+                    "barcelona": 1.9712226,
+                    "aturS": 3.95887497045616,
+                    "aturN": 96.0411250295438,
+                    "edu0": 1.96171117939022,
+                    "edu2": 16.219569841645,
+                    "edu3": 21.7738123375089,
+                    "edu1": 12.5324982273694,
+                    "edu4": 35.4585204443394,
+                    "immS": 6.82462774757741,
+                    "immN": 93.1753722524226
+            },
+                "6": {
+                "donaS": 54.11735079,
+                    "barcelona": 3.18369441,
+                    "aturS": 3.84078462254358,
+                    "aturN": 96.1592153774564,
+                    "edu0": 2.39825321258546,
+                    "edu2": 17.5573612055697,
+                    "edu3": 21.2191717077711,
+                    "edu1": 14.3394065218169,
+                    "edu4": 34.1053083724093,
+                    "immS": 6.79385760818986,
+                    "immN": 93.2061423918102
+            },
+                "7": {
+                "donaS": 53.99372642,
+                    "barcelona": 2.71319861,
+                    "aturS": 2.87951502904774,
+                    "aturN": 97.1204849709523,
+                    "edu0": 1.30504336111813,
+                    "edu2": 11.6148859139513,
+                    "edu3": 21.4069209396312,
+                    "edu1": 8.17546518481098,
+                    "edu4": 43.8410372989812,
+                    "immS": 6.97566725604109,
+                    "immN": 93.0243327439589
+            },
+                "8": {
+                "donaS": 53.9052679,
+                    "barcelona": 2.60015381,
+                    "aturS": 3.44524134289611,
+                    "aturN": 96.5547586571039,
+                    "edu0": 1.51801821621859,
+                    "edu2": 13.3717604611255,
+                    "edu3": 22.1454657455889,
+                    "edu1": 9.43371320455845,
+                    "edu4": 42.3417081004972,
+                    "immS": 7.80569366832402,
+                    "immN": 92.194306331676
+            },
+                "9": {
+                "donaS": 53.56210497,
+                    "barcelona": 3.59079138,
+                    "aturS": 3.55287629064324,
+                    "aturN": 96.4471237093568,
+                    "edu0": 1.73154620663118,
+                    "edu2": 15.3530430321298,
+                    "edu3": 21.9393317514269,
+                    "edu1": 12.0246264349388,
+                    "edu4": 37.8342846148913,
+                    "immS": 6.8460206502918,
+                    "immN": 93.1539793497082
+            },
+                "10": {
+                "donaS": 52.91337765,
+                    "barcelona": 2.37511263,
+                    "aturS": 3.93561684169202,
+                    "aturN": 96.064383158308,
+                    "edu0": 2.61065855334184,
+                    "edu2": 17.2293650014722,
+                    "edu3": 20.6006477573854,
+                    "edu1": 14.9376778879183,
+                    "edu4": 32.3486112474237,
+                    "immS": 6.07027186181176,
+                    "immN": 93.9297281381882
+            },
+                "11": {
+                "donaS": 50.586711,
+                    "barcelona": 2.52275543,
+                    "aturS": 5.17566326777171,
+                    "aturN": 94.8243367322283,
+                    "edu0": 3.32962837674576,
+                    "edu2": 18.6294882327357,
+                    "edu3": 17.9722611511139,
+                    "edu1": 20.2435606243657,
+                    "edu4": 25.5931957666844,
+                    "immS": 7.21016768955686,
+                    "immN": 92.7898323104431
+            },
+                "12": {
+                "donaS": 49.2970123,
+                    "barcelona": 0.07018275,
+                    "aturS": 8.37789661319073,
+                    "aturN": 91.6221033868093,
+                    "edu0": 6.59536541889483,
+                    "edu2": 25.668449197861,
+                    "edu3": 9.98217468805704,
+                    "edu1": 36.5418894830659,
+                    "edu4": 6.06060606060606,
+                    "immS": 2.67379679144385,
+                    "immN": 97.3262032085562
+            },
+                "13": {
+                "donaS": 51.67820467,
+                    "barcelona": 1.87970133,
+                    "aturS": 6.05675830106025,
+                    "aturN": 93.9432416989397,
+                    "edu0": 4.06958288362644,
+                    "edu2": 22.7731572598565,
+                    "edu3": 18.9130848834995,
+                    "edu1": 25.8459780331408,
+                    "edu4": 14.6276426893531,
+                    "immS": 4.92032251920513,
+                    "immN": 95.0796774807949
+            },
+                "14": {
+                "donaS": 52.90525713,
+                    "barcelona": 0.64638439,
+                    "aturS": 4.92335437330929,
+                    "aturN": 95.0766456266907,
+                    "edu0": 3.42651036970243,
+                    "edu2": 19.0802524797115,
+                    "edu3": 19.9278629395852,
+                    "edu1": 17.1866546438233,
+                    "edu4": 27.5743913435527,
+                    "immS": 5.32010820559062,
+                    "immN": 94.6798917944094
+            },
+                "15": {
+                "donaS": 51.92428231,
+                    "barcelona": 0.98391532,
+                    "aturS": 4.63544181554804,
+                    "aturN": 95.3645581844519,
+                    "edu0": 2.74022211492033,
+                    "edu2": 18.8556253017866,
+                    "edu3": 19.6040560115886,
+                    "edu1": 18.0468372766779,
+                    "edu4": 29.4785127957508,
+                    "immS": 6.94109126026074,
+                    "immN": 93.0589087397393
+            },
+                "16": {
+                "donaS": 52.78032964,
+                    "barcelona": 1.14124063,
+                    "aturS": 4.61758984335006,
+                    "aturN": 95.3824101566499,
+                    "edu0": 3.53230265178663,
+                    "edu2": 21.0299989761442,
+                    "edu3": 20.9788061840893,
+                    "edu1": 20.4771168219515,
+                    "edu4": 22.9343708405856,
+                    "immS": 4.8530766868025,
+                    "immN": 95.1469233131975
+            },
+                "17": {
+                "donaS": 53.11370358,
+                    "barcelona": 1.50134352,
+                    "aturS": 3.82830626450116,
+                    "aturN": 96.1716937354988,
+                    "edu0": 3.63495746326373,
+                    "edu2": 20.3248259860789,
+                    "edu3": 19.4508894044857,
+                    "edu1": 20.3557617942769,
+                    "edu4": 23.9211136890951,
+                    "immS": 5.97834493426141,
+                    "immN": 94.0216550657386
+            },
+                "18": {
+                "donaS": 52.55488587,
+                    "barcelona": 2.54785594,
+                    "aturS": 4.26952837140752,
+                    "aturN": 95.7304716285925,
+                    "edu0": 3.03058216654385,
+                    "edu2": 18.1742815033161,
+                    "edu3": 20.3067428150332,
+                    "edu1": 16.2076271186441,
+                    "edu4": 30.7295504789978,
+                    "immS": 6.59543109801032,
+                    "immN": 93.4045689019897
+            },
+                "19": {
+                "donaS": 53.50340429,
+                    "barcelona": 2.86232154,
+                    "aturS": 3.74919458762887,
+                    "aturN": 96.2508054123711,
+                    "edu0": 1.7920425257732,
+                    "edu2": 14.8115335051546,
+                    "edu3": 22.7810889175258,
+                    "edu1": 10.8932023195876,
+                    "edu4": 36.9321842783505,
+                    "immS": 4.92106958762887,
+                    "immN": 95.0789304123711
+            },
+                "20": {
+                "donaS": 53.23385153,
+                    "barcelona": 1.48370533,
+                    "aturS": 3.81822440852659,
+                    "aturN": 96.1817755914734,
+                    "edu0": 2.69383930662919,
+                    "edu2": 15.4759116108378,
+                    "edu3": 22.1909893027251,
+                    "edu1": 13.7581010384946,
+                    "edu4": 33.5831966893105,
+                    "immS": 5.67658311860701,
+                    "immN": 94.323416881393
+            },
+                "21": {
+                "donaS": 53.38983051,
+                    "barcelona": 0.72772977,
+                    "aturS": 2.06349206349206,
+                    "aturN": 97.9365079365079,
+                    "edu0": 0.476190476190476,
+                    "edu2": 11.3174603174603,
+                    "edu3": 24.5396825396825,
+                    "edu1": 6.36507936507937,
+                    "edu4": 40.3809523809524,
+                    "immS": 6.3015873015873,
+                    "immN": 93.6984126984127
+            },
+                "22": {
+                "donaS": 51.37162452,
+                    "barcelona": 0.28776162,
+                    "aturS": 1.91906549853984,
+                    "aturN": 98.0809345014602,
+                    "edu0": 1.75219023779725,
+                    "edu2": 11.6812682519816,
+                    "edu3": 22.3195661243221,
+                    "edu1": 7.71798080934502,
+                    "edu4": 35.4192740926158,
+                    "immS": 4.08844388819358,
+                    "immN": 95.9115561118064
+            },
+                "23": {
+                "donaS": 53.4550143,
+                    "barcelona": 1.53063773,
+                    "aturS": 2.01251224843597,
+                    "aturN": 97.987487751564,
+                    "edu0": 1.06278736715158,
+                    "edu2": 10.8766111404236,
+                    "edu3": 21.9718097535238,
+                    "edu1": 7.14554910680636,
+                    "edu4": 40.6798824150147,
+                    "immS": 4.5375744328032,
+                    "immN": 95.4624255671968
+            },
+                "24": {
+                "donaS": 53.29058795,
+                    "barcelona": 1.01956175,
+                    "aturS": 2.02043132803632,
+                    "aturN": 97.9795686719637,
+                    "edu0": 0.454029511918275,
+                    "edu2": 9.38706015891033,
+                    "edu3": 26.1407491486947,
+                    "edu1": 4.90351872871737,
+                    "edu4": 41.577752553916,
+                    "immS": 4.14301929625426,
+                    "immN": 95.8569807037457
+            },
+                "25": {
+                "donaS": 53.94932353,
+                    "barcelona": 1.5772001,
+                    "aturS": 2.12365006885555,
+                    "aturN": 97.8763499311444,
+                    "edu0": 0.927737914039284,
+                    "edu2": 10.9734000144959,
+                    "edu3": 25.3170979198376,
+                    "edu1": 5.71138653330434,
+                    "edu4": 41.1393781256795,
+                    "immS": 4.71116909473074,
+                    "immN": 95.2888309052693
+            },
+                "26": {
+                "donaS": 54.93272113,
+                    "barcelona": 2.90123659,
+                    "aturS": 2.24440832752883,
+                    "aturN": 97.7555916724712,
+                    "edu0": 0.681061837319093,
+                    "edu2": 10.7808993111988,
+                    "edu3": 26.1009209813482,
+                    "edu1": 5.87028867734696,
+                    "edu4": 42.2142249051931,
+                    "immS": 5.19309650955808,
+                    "immN": 94.8069034904419
+            },
+                "27": {
+                "donaS": 54.64854157,
+                    "barcelona": 1.80563325,
+                    "aturS": 3.19375,
+                    "aturN": 96.80625,
+                    "edu0": 0.9125,
+                    "edu2": 11.9875,
+                    "edu3": 24.6125,
+                    "edu1": 6.20625,
+                    "edu4": 42.2125,
+                    "immS": 4.8875,
+                    "immN": 95.1125
+            },
+                "28": {
+                "donaS": 53.66386231,
+                    "barcelona": 0.96029494,
+                    "aturS": 3.82958353279081,
+                    "aturN": 96.1704164672092,
+                    "edu0": 2.20201053135472,
+                    "edu2": 15.4858784107228,
+                    "edu3": 22.4748683580661,
+                    "edu1": 10.8784107228339,
+                    "edu4": 35.5313547151747,
+                    "immS": 4.99042604116802,
+                    "immN": 95.009573958832
+            },
+                "29": {
+                "donaS": 52.95479303,
+                    "barcelona": 0.45291928,
+                    "aturS": 3.41990228850604,
+                    "aturN": 96.580097711494,
+                    "edu0": 3.11133967600926,
+                    "edu2": 18.6680380560555,
+                    "edu3": 23.1936230393417,
+                    "edu1": 15.4024170737979,
+                    "edu4": 28.6963229622011,
+                    "immS": 5.29699151452816,
+                    "immN": 94.7030084854718
+            },
+                "30": {
+                "donaS": 54.22836954,
+                    "barcelona": 0.82042281,
+                    "aturS": 3.96451344607707,
+                    "aturN": 96.0354865539229,
+                    "edu0": 1.92680898253396,
+                    "edu2": 15.4006099251456,
+                    "edu3": 21.9711671749376,
+                    "edu1": 11.1449958414195,
+                    "edu4": 36.0271693928472,
+                    "immS": 4.85167729415026,
+                    "immN": 95.1483227058497
+            },
+                "31": {
+                "donaS": 54.65755577,
+                    "barcelona": 3.14083236,
+                    "aturS": 3.8511280356373,
+                    "aturN": 96.1488719643627,
+                    "edu0": 2.19140681132347,
+                    "edu2": 12.9544474780859,
+                    "edu3": 19.4640034487714,
+                    "edu1": 11.3270584854146,
+                    "edu4": 41.2559275758011,
+                    "immS": 7.05561143842506,
+                    "immN": 92.9443885615749
+            },
+                "32": {
+                "donaS": 54.12737222,
+                    "barcelona": 2.11880374,
+                    "aturS": 3.71585287158529,
+                    "aturN": 96.2841471284147,
+                    "edu0": 2.04345020434502,
+                    "edu2": 15.6969240696924,
+                    "edu3": 22.1660572166057,
+                    "edu1": 11.9703161970316,
+                    "edu4": 37.2123037212304,
+                    "immS": 5.15164551516455,
+                    "immN": 94.8483544848355
+            },
+                "33": {
+                "donaS": 53.93153769,
+                    "barcelona": 1.58904113,
+                    "aturS": 3.8860103626943,
+                    "aturN": 96.1139896373057,
+                    "edu0": 3.41105354058722,
+                    "edu2": 18.7679907887162,
+                    "edu3": 22.2869890616005,
+                    "edu1": 15.2705814622913,
+                    "edu4": 29.3969487622337,
+                    "immS": 4.78554979850317,
+                    "immN": 95.2144502014968
+            },
+                "34": {
+                "donaS": 53.14080234,
+                    "barcelona": 0.54881926,
+                    "aturS": 4.35610065552971,
+                    "aturN": 95.6438993444703,
+                    "edu0": 4.41953901459082,
+                    "edu2": 20.0676675829985,
+                    "edu3": 20.4271516176782,
+                    "edu1": 16.938041869317,
+                    "edu4": 26.3692112497357,
+                    "immS": 4.92704588707972,
+                    "immN": 95.0729541129203
+            },
+                "35": {
+                "donaS": 53.62451724,
+                    "barcelona": 2.21963748,
+                    "aturS": 4.45077720207254,
+                    "aturN": 95.5492227979275,
+                    "edu0": 2.81865284974093,
+                    "edu2": 19.7253886010363,
+                    "edu3": 22.7772020725389,
+                    "edu1": 15.2020725388601,
+                    "edu4": 28.0051813471503,
+                    "immS": 4.98963730569948,
+                    "immN": 95.0103626943005
+            },
+                "36": {
+                "donaS": 52.58285113,
+                    "barcelona": 0.5861925,
+                    "aturS": 5.14205682272909,
+                    "aturN": 94.8579431772709,
+                    "edu0": 2.28091236494598,
+                    "edu2": 18.9275710284114,
+                    "edu3": 21.0484193677471,
+                    "edu1": 13.8855542216887,
+                    "edu4": 27.8711484593838,
+                    "immS": 3.24129651860744,
+                    "immN": 96.7587034813926
+            },
+                "37": {
+                "donaS": 51.93292089,
+                    "barcelona": 1.96382196,
+                    "aturS": 5.30930640382173,
+                    "aturN": 94.6906935961783,
+                    "edu0": 5.81725826933543,
+                    "edu2": 25.5669105641894,
+                    "edu3": 18.268126020439,
+                    "edu1": 23.8616435871077,
+                    "edu4": 13.1341839511399,
+                    "immS": 4.49295519138901,
+                    "immN": 95.507044808611
+            },
+                "38": {
+                "donaS": 51.60894345,
+                    "barcelona": 0.70336933,
+                    "aturS": 4.51919809717975,
+                    "aturN": 95.4808019028203,
+                    "edu0": 4.99490316004078,
+                    "edu2": 23.5643900781515,
+                    "edu3": 19.8946653075093,
+                    "edu1": 22.3241590214067,
+                    "edu4": 17.6860346585117,
+                    "immS": 4.51919809717975,
+                    "immN": 95.4808019028203
+            },
+                "39": {
+                "donaS": 53.14177913,
+                    "barcelona": 0.42498185,
+                    "aturS": 4.39650464227198,
+                    "aturN": 95.603495357728,
+                    "edu0": 5.9803386127799,
+                    "edu2": 22.392135445112,
+                    "edu3": 21.7367558711087,
+                    "edu1": 20.3440742763517,
+                    "edu4": 19.5248498088476,
+                    "immS": 4.72419442927362,
+                    "immN": 95.2758055707264
+            },
+                "40": {
+                "donaS": 55.61643836,
+                    "barcelona": 0.31514399,
+                    "aturS": 4.08163265306122,
+                    "aturN": 95.9183673469388,
+                    "edu0": 7.10767065446868,
+                    "edu2": 19.5636875439831,
+                    "edu3": 20.1266713581985,
+                    "edu1": 18.4377199155524,
+                    "edu4": 23.9971850809289,
+                    "immS": 4.46868402533427,
+                    "immN": 95.5313159746657
+            },
+                "41": {
+                "donaS": 52.51417078,
+                    "barcelona": 0.33728425,
+                    "aturS": 4.31754874651811,
+                    "aturN": 95.6824512534819,
+                    "edu0": 3.2033426183844,
+                    "edu2": 19.533426183844,
+                    "edu3": 21.6573816155989,
+                    "edu1": 17.374651810585,
+                    "edu4": 29.9442896935933,
+                    "immS": 3.30779944289694,
+                    "immN": 96.6922005571031
+            },
+                "42": {
+                "donaS": 49.72067039,
+                    "barcelona": 0.03311787,
+                    "aturS": 3.37078651685393,
+                    "aturN": 96.6292134831461,
+                    "edu0": 4.49438202247191,
+                    "edu2": 25.0936329588015,
+                    "edu3": 22.8464419475655,
+                    "edu1": 13.8576779026217,
+                    "edu4": 36.7041198501873,
+                    "immS": 7.86516853932584,
+                    "immN": 92.1348314606742
+            },
+                "43": {
+                "donaS": 52.80401859,
+                    "barcelona": 1.64516266,
+                    "aturS": 5.30313786738606,
+                    "aturN": 94.6968621326139,
+                    "edu0": 4.48672440721284,
+                    "edu2": 19.9346869231861,
+                    "edu3": 21.432628141417,
+                    "edu1": 19.7004117563538,
+                    "edu4": 22.682095697856,
+                    "immS": 4.30214397273889,
+                    "immN": 95.6978560272611
+            },
+                "44": {
+                "donaS": 54.05965365,
+                    "barcelona": 1.57763181,
+                    "aturS": 5.03290187287584,
+                    "aturN": 94.9670981271242,
+                    "edu0": 4.16516017065587,
+                    "edu2": 21.9972521512763,
+                    "edu3": 20.7607202256128,
+                    "edu1": 19.5458818425049,
+                    "edu4": 21.2018222575747,
+                    "immS": 3.95545592595271,
+                    "immN": 96.0445440740473
+            },
+                "45": {
+                "donaS": 53.02389855,
+                    "barcelona": 1.51737825,
+                    "aturS": 5.12034340027595,
+                    "aturN": 94.8796565997241,
+                    "edu0": 5.35796412693546,
+                    "edu2": 23.1105319638203,
+                    "edu3": 20.6730032193776,
+                    "edu1": 24.1989881956155,
+                    "edu4": 17.4842863713016,
+                    "immS": 5.75655373294496,
+                    "immN": 94.243446267055
+            },
+                "46": {
+                "donaS": 54.12755561,
+                    "barcelona": 0.95924652,
+                    "aturS": 5.17876232331631,
+                    "aturN": 94.8212376766837,
+                    "edu0": 6.49720869461931,
+                    "edu2": 23.0312388644732,
+                    "edu3": 18.826463950588,
+                    "edu1": 23.5538662548996,
+                    "edu4": 13.6358237320347,
+                    "immS": 5.57073286613612,
+                    "immN": 94.4292671338639
+            },
+                "47": {
+                "donaS": 52.06971678,
+                    "barcelona": 0.14153727,
+                    "aturS": 5.10460251046025,
+                    "aturN": 94.8953974895398,
+                    "edu0": 6.10878661087866,
+                    "edu2": 25.2719665271967,
+                    "edu3": 15.5648535564854,
+                    "edu1": 28.7029288702929,
+                    "edu4": 8.36820083682008,
+                    "immS": 2.59414225941423,
+                    "immN": 97.4058577405858
+            },
+                "48": {
+                "donaS": 53.44952796,
+                    "barcelona": 0.93414601,
+                    "aturS": 6.21294466403162,
+                    "aturN": 93.7870553359684,
+                    "edu0": 5.11363636363636,
+                    "edu2": 23.147233201581,
+                    "edu3": 19.9728260869565,
+                    "edu1": 22.554347826087,
+                    "edu4": 17.2677865612648,
+                    "immS": 3.39673913043478,
+                    "immN": 96.6032608695652
+            },
+                "49": {
+                "donaS": 52.06493876,
+                    "barcelona": 0.43306089,
+                    "aturS": 6.72866520787746,
+                    "aturN": 93.2713347921225,
+                    "edu0": 5.33369803063457,
+                    "edu2": 26.8873085339168,
+                    "edu3": 15.1531728665208,
+                    "edu1": 27.1608315098468,
+                    "edu4": 12.417943107221,
+                    "immS": 2.13347921225383,
+                    "immN": 97.8665207877462
+            },
+                "50": {
+                "donaS": 51.36570076,
+                    "barcelona": 0.96411861,
+                    "aturS": 6.62515566625156,
+                    "aturN": 93.3748443337484,
+                    "edu0": 5.55417185554172,
+                    "edu2": 27.0112079701121,
+                    "edu3": 15.840597758406,
+                    "edu1": 27.7833125778331,
+                    "edu4": 8.87920298879203,
+                    "immS": 6.31382316313823,
+                    "immN": 93.6861768368618
+            },
+                "51": {
+                "donaS": 53.88807548,
+                    "barcelona": 0.75819575,
+                    "aturS": 6.15849056603774,
+                    "aturN": 93.8415094339623,
+                    "edu0": 5.76603773584906,
+                    "edu2": 25.5849056603774,
+                    "edu3": 18.022641509434,
+                    "edu1": 25.7660377358491,
+                    "edu4": 11.622641509434,
+                    "immS": 5.44905660377358,
+                    "immN": 94.5509433962264
+            },
+                "52": {
+                "donaS": 52.47005134,
+                    "barcelona": 1.62166563,
+                    "aturS": 5.44321229252736,
+                    "aturN": 94.5567877074726,
+                    "edu0": 6.46517358846126,
+                    "edu2": 25.7302312096833,
+                    "edu3": 18.3953033268102,
+                    "edu1": 25.2446183953033,
+                    "edu4": 12.1475683119519,
+                    "immS": 4.60244980792926,
+                    "immN": 95.3975501920707
+            },
+                "53": {
+                "donaS": 52.40326684,
+                    "barcelona": 0.46062828,
+                    "aturS": 8.3290751149719,
+                    "aturN": 91.6709248850281,
+                    "edu0": 7.40929994890138,
+                    "edu2": 27.286663260092,
+                    "edu3": 14.3842616249361,
+                    "edu1": 26.2902401635156,
+                    "edu4": 7.92028615227389,
+                    "immS": 6.05518650996423,
+                    "immN": 93.9448134900358
+            },
+                "54": {
+                "donaS": 49.68738507,
+                    "barcelona": 0.16768621,
+                    "aturS": 6.58771280532939,
+                    "aturN": 93.4122871946706,
+                    "edu0": 4.29311621021466,
+                    "edu2": 26.2768319763138,
+                    "edu3": 13.1014063656551,
+                    "edu1": 31.4581791265729,
+                    "edu4": 8.29015544041451,
+                    "immS": 3.10880829015544,
+                    "immN": 96.8911917098446
+            },
+                "55": {
+                "donaS": 50.38167939,
+                    "barcelona": 0.63824368,
+                    "aturS": 8.93747602608362,
+                    "aturN": 91.0625239739164,
+                    "edu0": 3.98925968546222,
+                    "edu2": 27.4453394706559,
+                    "edu3": 14.9021864211738,
+                    "edu1": 32.4127349443805,
+                    "edu4": 7.0771001150748,
+                    "immS": 8.22784810126582,
+                    "immN": 91.7721518987342
+            },
+                "56": {
+                "donaS": 51.18694362,
+                    "barcelona": 0.08313388,
+                    "aturS": 7.82608695652174,
+                    "aturN": 92.1739130434783,
+                    "edu0": 5.94202898550725,
+                    "edu2": 24.9275362318841,
+                    "edu3": 11.1594202898551,
+                    "edu1": 28.2608695652174,
+                    "edu4": 8.84057971014493,
+                    "immS": 5.50724637681159,
+                    "immN": 94.4927536231884
+            },
+                "57": {
+                "donaS": 47.56656588,
+                    "barcelona": 0.63232317,
+                    "aturS": 8.85790444945663,
+                    "aturN": 91.1420955505434,
+                    "edu0": 4.18289932335452,
+                    "edu2": 24.666803362723,
+                    "edu3": 14.619643223293,
+                    "edu1": 27.7424646298954,
+                    "edu4": 10.1291777732212,
+                    "immS": 6.2948533934796,
+                    "immN": 93.7051466065204
+            },
+                "58": {
+                "donaS": 51.31837859,
+                    "barcelona": 0.15670859,
+                    "aturS": 5.29141104294479,
+                    "aturN": 94.7085889570552,
+                    "edu0": 5.21472392638037,
+                    "edu2": 27.9141104294479,
+                    "edu3": 12.5766871165644,
+                    "edu1": 29.2944785276074,
+                    "edu4": 5.67484662576687,
+                    "immS": 3.45092024539877,
+                    "immN": 96.5490797546012
+            },
+                "59": {
+                "donaS": 49.80416732,
+                    "barcelona": 0.78730494,
+                    "aturS": 6.18118905316137,
+                    "aturN": 93.8188109468386,
+                    "edu0": 3.79050015728216,
+                    "edu2": 24.4573765335011,
+                    "edu3": 16.7033658383139,
+                    "edu1": 24.331550802139,
+                    "edu4": 12.5511167033658,
+                    "immS": 5.52060396351054,
+                    "immN": 94.4793960364895
+            },
+                "60": {
+                "donaS": 52.82304903,
+                    "barcelona": 3.50408053,
+                    "aturS": 5.29437243860994,
+                    "aturN": 94.7056275613901,
+                    "edu0": 2.86875687202212,
+                    "edu2": 21.1275114117216,
+                    "edu3": 21.3607436777396,
+                    "edu1": 17.7489754439743,
+                    "edu4": 23.8596608136474,
+                    "immS": 3.41851864192183,
+                    "immN": 96.5814813580782
+            },
+                "61": {
+                "donaS": 53.20244388,
+                    "barcelona": 1.79675248,
+                    "aturS": 4.45161290322581,
+                    "aturN": 95.5483870967742,
+                    "edu0": 3.18709677419355,
+                    "edu2": 21.9612903225806,
+                    "edu3": 21.4064516129032,
+                    "edu1": 18.4709677419355,
+                    "edu4": 22.6,
+                    "immS": 4.58709677419355,
+                    "immN": 95.4129032258065
+            },
+                "62": {
+                "donaS": 54.60066379,
+                    "barcelona": 0.8733374,
+                    "aturS": 4.34557682359027,
+                    "aturN": 95.6544231764097,
+                    "edu0": 4.02224521469219,
+                    "edu2": 20.3310915675116,
+                    "edu3": 21.5080186239007,
+                    "edu1": 16.6321779617175,
+                    "edu4": 23.6678737713399,
+                    "immS": 3.95757889291257,
+                    "immN": 96.0424211070874
+            },
+                "63": {
+                "donaS": 53.4793055,
+                    "barcelona": 1.36042297,
+                    "aturS": 4.38247011952191,
+                    "aturN": 95.6175298804781,
+                    "edu0": 2.9583792489616,
+                    "edu2": 21.081630923116,
+                    "edu3": 21.810629821141,
+                    "edu1": 17.9791472408239,
+                    "edu4": 23.3703483936594,
+                    "immS": 4.12816817835043,
+                    "immN": 95.8718318216496
+            },
+                "64": {
+                "donaS": 53.14512135,
+                    "barcelona": 2.36580015,
+                    "aturS": 4.59606612056703,
+                    "aturN": 95.403933879433,
+                    "edu0": 2.82532986707215,
+                    "edu2": 19.6105361259626,
+                    "edu3": 20.817187423358,
+                    "edu1": 16.3780840731839,
+                    "edu4": 28.6162750772551,
+                    "immS": 5.52312748320008,
+                    "immN": 94.4768725167999
+            },
+                "65": {
+                "donaS": 51.92491719,
+                    "barcelona": 1.67562864,
+                    "aturS": 4.70654947547491,
+                    "aturN": 95.2934505245251,
+                    "edu0": 2.70768358378225,
+                    "edu2": 20.9455628012475,
+                    "edu3": 21.0306209242983,
+                    "edu1": 16.6005103487383,
+                    "edu4": 25.1204990076552,
+                    "immS": 4.61440317550326,
+                    "immN": 95.3855968244968
+            },
+                "66": {
+                "donaS": 51.63210702,
+                    "barcelona": 0.92199662,
+                    "aturS": 4.28812022282679,
+                    "aturN": 95.7118797771732,
+                    "edu0": 2.72055965798679,
+                    "edu2": 17.5152221790387,
+                    "edu3": 21.4017359761627,
+                    "edu1": 15.1314937168027,
+                    "edu4": 32.2321544241482,
+                    "immS": 6.07591656950382,
+                    "immN": 93.9240834304962
+            },
+                "67": {
+                "donaS": 51.01823222,
+                    "barcelona": 0.57842183,
+                    "aturS": 4.59770114942529,
+                    "aturN": 95.4022988505747,
+                    "edu0": 0.919540229885057,
+                    "edu2": 11.9122257053292,
+                    "edu3": 19.3939393939394,
+                    "edu1": 5.47544409613375,
+                    "edu4": 44.6812957157785,
+                    "immS": 4.59770114942529,
+                    "immN": 95.4022988505747
+            },
+                "68": {
+                "donaS": 51.39111825,
+                    "barcelona": 2.07476992,
+                    "aturS": 4.37850656486784,
+                    "aturN": 95.6214934351322,
+                    "edu0": 2.81681994331656,
+                    "edu2": 17.1264966163457,
+                    "edu3": 19.7697958239343,
+                    "edu1": 14.4947654578055,
+                    "edu4": 30.1694719185609,
+                    "immS": 5.15356585111921,
+                    "immN": 94.8464341488808
+            },
+                "69": {
+                "donaS": 51.27900059,
+                    "barcelona": 0.82936525,
+                    "aturS": 4.90139211136891,
+                    "aturN": 95.0986078886311,
+                    "edu0": 2.23317865429234,
+                    "edu2": 14.080626450116,
+                    "edu3": 18.5469837587007,
+                    "edu1": 11.7314385150812,
+                    "edu4": 34.1937354988399,
+                    "immS": 5.81496519721578,
+                    "immN": 94.1850348027842
+            },
+                "70": {
+                "donaS": 48.89911413,
+                    "barcelona": 1.43412103,
+                    "aturS": 6.79799489930525,
+                    "aturN": 93.2020051006947,
+                    "edu0": 6.05927359071322,
+                    "edu2": 25.3715592296192,
+                    "edu3": 16.128748570926,
+                    "edu1": 25.8376571981356,
+                    "edu4": 11.7491865271304,
+                    "immS": 7.65104212470319,
+                    "immN": 92.3489578752968
+            },
+                "71": {
+                "donaS": 51.71377918,
+                    "barcelona": 1.25231193,
+                    "aturS": 5.10427578325874,
+                    "aturN": 94.8957242167413,
+                    "edu0": 3.40919912389296,
+                    "edu2": 21.4836682220741,
+                    "edu3": 20.5313779640034,
+                    "edu1": 18.3030187601181,
+                    "edu4": 23.3120655175698,
+                    "immS": 4.80906580325683,
+                    "immN": 95.1909341967432
+            },
+                "72": {
+                "donaS": 53.080623,
+                    "barcelona": 1.6155601,
+                    "aturS": 5.41531823085221,
+                    "aturN": 94.5846817691478,
+                    "edu0": 4.33656957928803,
+                    "edu2": 22.7831715210356,
+                    "edu3": 19.1585760517799,
+                    "edu1": 21.9705142035239,
+                    "edu4": 18.2308522114347,
+                    "immS": 3.86192017259978,
+                    "immN": 96.1380798274002
+            },
+                "73": {
+                "donaS": 52.34205356,
+                    "barcelona": 1.78929016,
+                    "aturS": 5.61701567232978,
+                    "aturN": 94.3829843276702,
+                    "edu0": 5.18898985908073,
+                    "edu2": 24.4830765178454,
+                    "edu3": 18.4051099697089,
+                    "edu1": 24.6740418806796,
+                    "edu4": 13.5256156986698,
+                    "immS": 4.20123798235217,
+                    "immN": 95.7987620176478
+            }
+            },
+        "tots" : {
+            "1": {
+                "barcelona": 3.18369441,
+                "aturS": 6.40869367601182,
+                "aturN": 93.5913063239882,
+                "edu0": 1.6527901163151,
+                "edu2": 20.2652728136686,
+                "edu3": 15.5486230192343,
+                "edu1": 24.3228725492222,
+                "edu4": 21.8808751523666,
+                "immS": 11.156333285127,
+                "immN": 88.8436667148731
+            },
+            "2": {
+                "barcelona": 2.37511263,
+                "aturS": 5.37918871252205,
+                "aturN": 94.620811287478,
+                "edu0": 1.69438145628622,
+                "edu2": 18.5878054925674,
+                "edu3": 21.6931216931217,
+                "edu1": 18.09019904258,
+                "edu4": 37.2511967750063,
+                "immS": 16.9249181153943,
+                "immN": 83.0750818846057
+            },
+            "3": {
+                "barcelona": 2.71319861,
+                "aturS": 6.07415198527478,
+                "aturN": 93.9258480147252,
+                "edu0": 3.18827241651328,
+                "edu2": 21.4107283723376,
+                "edu3": 18.7089140152511,
+                "edu1": 19.3662897712332,
+                "edu4": 25.552195635025,
+                "immS": 11.5632395477255,
+                "immN": 88.4367604522745
+            },
+            "4": {
+                "barcelona": 2.60015381,
+                "aturS": 5.59152957647882,
+                "aturN": 94.4084704235212,
+                "edu0": 1.68445922296115,
+                "edu2": 15.4313965698285,
+                "edu3": 19.2247112355618,
+                "edu1": 15.3788939446972,
+                "edu4": 36.0693034651733,
+                "immS": 12.0974798739937,
+                "immN": 87.9025201260063
+            },
+            "5": {
+                "barcelona": 0.15670859,
+                "aturS": 3.69176860745237,
+                "aturN": 96.3082313925476,
+                "edu0": 1.37659168413478,
+                "edu2": 16.2437818727904,
+                "edu3": 23.6304477051591,
+                "edu1": 11.2598942527297,
+                "edu4": 34.4273065732253,
+                "immS": 6.99871726683978,
+                "immN": 93.0012827331602
+            },
+            "6": {
+                "barcelona": 0.63232317,
+                "aturS": 3.65728454371114,
+                "aturN": 96.3427154562889,
+                "edu0": 1.73759758247293,
+                "edu2": 17.403095519439,
+                "edu3": 23.185401855762,
+                "edu1": 12.2794103403522,
+                "edu4": 33.4153381244794,
+                "immS": 6.9562016930438,
+                "immN": 93.0437983069562
+            },
+            "7": {
+                "barcelona": 0.57842183,
+                "aturS": 2.79583579579033,
+                "aturN": 97.2041642042097,
+                "edu0": 0.831931627040051,
+                "edu2": 11.4379233531845,
+                "edu3": 22.1962085738964,
+                "edu1": 6.83956903214075,
+                "edu4": 44.6219939082602,
+                "immS": 7.27371914351957,
+                "immN": 92.7262808564804
+            },
+            "8": {
+                "barcelona": 3.50408053,
+                "aturS": 3.40599131899148,
+                "aturN": 96.5940086810085,
+                "edu0": 1.05073409074737,
+                "edu2": 12.9859348687175,
+                "edu3": 23.7091150589407,
+                "edu1": 7.93624439648016,
+                "edu4": 42.5748914873936,
+                "immS": 8.22323948672944,
+                "immN": 91.7767605132706
+            },
+            "9": {
+                "barcelona": 1.79675248,
+                "aturS": 3.46077219016213,
+                "aturN": 96.5392278098379,
+                "edu0": 1.20568837592745,
+                "edu2": 14.8993542181918,
+                "edu3": 23.5676009892828,
+                "edu1": 10.0937757625721,
+                "edu4": 37.8898735916461,
+                "immS": 6.9765045342127,
+                "immN": 93.0234954657873
+            },
+            "10": {
+                "barcelona": 1.57763181,
+                "aturS": 3.85594100540091,
+                "aturN": 96.1440589945991,
+                "edu0": 1.80463232239302,
+                "edu2": 17.4465101786456,
+                "edu3": 22.8214582467802,
+                "edu1": 13.1751142501039,
+                "edu4": 32.1795803905276,
+                "immS": 6.46551724137931,
+                "immN": 93.5344827586207
+            },
+            "11": {
+                "barcelona": 1.50134352,
+                "aturS": 5.09949640639515,
+                "aturN": 94.9005035936048,
+                "edu0": 2.23194641372904,
+                "edu2": 20.0386251405662,
+                "edu3": 19.1487801300543,
+                "edu1": 19.676820026402,
+                "edu4": 23.0944115777637,
+                "immS": 7.54657018530289,
+                "immN": 92.4534298146971
+            },
+            "12": {
+                "barcelona": 2.98511053,
+                "aturS": 8.52372583479789,
+                "aturN": 91.4762741652021,
+                "edu0": 4.48154657293497,
+                "edu2": 30.2284710017575,
+                "edu3": 10.4569420035149,
+                "edu1": 35.676625659051,
+                "edu4": 5.36028119507909,
+                "immS": 2.81195079086116,
+                "immN": 97.1880492091388
+            },
+            "13": {
+                "barcelona": 0.28776162,
+                "aturS": 5.32825880114177,
+                "aturN": 94.6717411988582,
+                "edu0": 2.99878604941107,
+                "edu2": 24.1412119820204,
+                "edu3": 19.9415991338299,
+                "edu1": 24.0559073460415,
+                "edu4": 13.1139473079825,
+                "immS": 4.91814035893566,
+                "immN": 95.0818596410644
+            },
+            "14": {
+                "barcelona": 0.98391532,
+                "aturS": 5.02814616925866,
+                "aturN": 94.9718538307413,
+                "edu0": 2.52838469611678,
+                "edu2": 19.6164488121362,
+                "edu3": 22.1734567312279,
+                "edu1": 15.4279171834749,
+                "edu4": 26.7054670355882,
+                "immS": 6.16353401392997,
+                "immN": 93.83646598607
+            },
+            "15": {
+                "barcelona": 1.64516266,
+                "aturS": 4.2183778362793,
+                "aturN": 95.7816221637207,
+                "edu0": 2.0245706405917,
+                "edu2": 19.4245957126739,
+                "edu3": 20.9853328318917,
+                "edu1": 17.0302118590949,
+                "edu4": 27.6419706656638,
+                "immS": 7.26463582800552,
+                "immN": 92.7353641719945
+            },
+            "16": {
+                "barcelona": 0.33728425,
+                "aturS": 4.26911645501216,
+                "aturN": 95.7308835449878,
+                "edu0": 2.63712510132397,
+                "edu2": 22.3831396919751,
+                "edu3": 23.226155093218,
+                "edu1": 18.340988921913,
+                "edu4": 21.2645231018644,
+                "immS": 5.1067279113753,
+                "immN": 94.8932720886247
+            },
+            "17": {
+                "barcelona": 2.36580015,
+                "aturS": 3.53680578376602,
+                "aturN": 96.463194216234,
+                "edu0": 2.72346368715084,
+                "edu2": 20.8141636542885,
+                "edu3": 21.3070982582977,
+                "edu1": 18.501478803812,
+                "edu4": 22.7694709168584,
+                "immS": 6.06309562931318,
+                "immN": 93.9369043706868
+            },
+            "18": {
+                "barcelona": 0.16768621,
+                "aturS": 3.92370440297243,
+                "aturN": 96.0762955970276,
+                "edu0": 2.18333212306054,
+                "edu2": 18.916563793479,
+                "edu3": 22.070534698521,
+                "edu1": 14.8234211991383,
+                "edu4": 28.7463994384334,
+                "immS": 6.87192893278145,
+                "immN": 93.1280710672186
+            },
+            "19": {
+                "barcelona": 0.8733374,
+                "aturS": 3.52925967422218,
+                "aturN": 96.4707403257778,
+                "edu0": 1.27122295957942,
+                "edu2": 13.9575971731449,
+                "edu3": 23.6878393518917,
+                "edu1": 9.15711453934327,
+                "edu4": 37.4795311557356,
+                "immS": 4.90390416271654,
+                "immN": 95.0960958372835
+            },
+            "20": {
+                "barcelona": 1.36042297,
+                "aturS": 3.53728489483748,
+                "aturN": 96.4627151051625,
+                "edu0": 1.95776872557985,
+                "edu2": 15.1591986033752,
+                "edu3": 23.1357552581262,
+                "edu1": 11.7133593814947,
+                "edu4": 33.6686341341757,
+                "immS": 5.54908969989193,
+                "immN": 94.4509103001081
+            },
+            "21": {
+                "barcelona": 1.36986301410959,
+                "aturS": 1.83050847457627,
+                "aturN": 98.1694915254237,
+                "edu0": 0.338983050847458,
+                "edu2": 9.91525423728814,
+                "edu3": 23,
+                "edu1": 4.79661016949153,
+                "edu4": 44.228813559322,
+                "immS": 6.47457627118644,
+                "immN": 93.5254237288136
+            },
+            "22": {
+                "barcelona": 1.6155601,
+                "aturS": 1.92884697813973,
+                "aturN": 98.0711530218603,
+                "edu0": 1.11444492070296,
+                "edu2": 13.0518645520789,
+                "edu3": 22.8246892413202,
+                "edu1": 7.50107158165452,
+                "edu4": 34.0977282468924,
+                "immS": 4.00771538791256,
+                "immN": 95.9922846120874
+            },
+            "23": {
+                "barcelona": 1.78929016,
+                "aturS": 1.88565212135864,
+                "aturN": 98.1143478786414,
+                "edu0": 0.721221644707684,
+                "edu2": 10.1696281074983,
+                "edu3": 21.757524477215,
+                "edu1": 5.85438575285064,
+                "edu4": 41.2224505419235,
+                "immS": 4.86723880897699,
+                "immN": 95.132761191023
+            },
+            "24": {
+                "barcelona": 0.82936525,
+                "aturS": 2.10500846842487,
+                "aturN": 97.8949915315751,
+                "edu0": 0.308492620372611,
+                "edu2": 8.37164287442536,
+                "edu3": 24.1954996370675,
+                "edu1": 3.73820469392693,
+                "edu4": 43.2857488507138,
+                "immS": 4.24631018630535,
+                "immN": 95.7536898136947
+            },
+            "25": {
+                "barcelona": 1.25231193,
+                "aturS": 2.04895597090795,
+                "aturN": 97.9510440290921,
+                "edu0": 0.559161648549308,
+                "edu2": 9.9554234769688,
+                "edu3": 24.673496519903,
+                "edu1": 4.78611089387659,
+                "edu4": 42.1013529365762,
+                "immS": 4.61797137717995,
+                "immN": 95.38202862282
+            },
+            "26": {
+                "barcelona": 1.43412103,
+                "aturS": 2.12358905682036,
+                "aturN": 97.8764109431797,
+                "edu0": 0.446400102034309,
+                "edu2": 9.72939650957635,
+                "edu3": 24.6923027868121,
+                "edu1": 4.5681610441511,
+                "edu4": 44.2510044002296,
+                "immS": 5.1739897540548,
+                "immN": 94.8260102459452
+            },
+            "27": {
+                "barcelona": 0.92199662,
+                "aturS": 3.08764259853815,
+                "aturN": 96.9123574014619,
+                "edu0": 0.642120363412801,
+                "edu2": 11.1551335473735,
+                "edu3": 24.7250495252408,
+                "edu1": 5.07889883188742,
+                "edu4": 42.8376255208689,
+                "immS": 5.17453377962976,
+                "immN": 94.8254662203702
+            },
+            "28": {
+                "barcelona": 0.96411861,
+                "aturS": 3.74413974696551,
+                "aturN": 96.2558602530345,
+                "edu0": 1.62481536189069,
+                "edu2": 15.8499775223171,
+                "edu3": 23.6079892107122,
+                "edu1": 9.4791599768801,
+                "edu4": 34.5963650375698,
+                "immS": 4.95793462205382,
+                "immN": 95.0420653779462
+            },
+            "29": {
+                "barcelona": 1.67562864,
+                "aturS": 3.29520697167756,
+                "aturN": 96.7047930283225,
+                "edu0": 2.34204793028322,
+                "edu2": 19.1040305010893,
+                "edu3": 23.7608932461874,
+                "edu1": 14.0114379084967,
+                "edu4": 26.7701525054466,
+                "immS": 5.06535947712418,
+                "immN": 94.9346405228758
+            },
+            "30": {
+                "barcelona": 0.75819575,
+                "aturS": 3.78861910847177,
+                "aturN": 96.2113808915282,
+                "edu0": 1.36811245583703,
+                "edu2": 15.1093738254529,
+                "edu3": 23.7014207321657,
+                "edu1": 10.0278132752011,
+                "edu4": 35.1048635646095,
+                "immS": 5.50251822897091,
+                "immN": 94.4974817710291
+            },
+            "31": {
+                "barcelona": 0.46062828,
+                "aturS": 3.71112158341188,
+                "aturN": 96.2888784165881,
+                "edu0": 1.53550109959158,
+                "edu2": 13.4699968583098,
+                "edu3": 21.4184731385485,
+                "edu1": 10.302780395853,
+                "edu4": 39.1552780395853,
+                "immS": 7.04327678290921,
+                "immN": 92.9567232170908
+            },
+            "32": {
+                "barcelona": 0.78730494,
+                "aturS": 3.56269647223192,
+                "aturN": 96.4373035277681,
+                "edu0": 1.46408196530446,
+                "edu2": 15.6741180579811,
+                "edu3": 24.0103620910467,
+                "edu1": 10.097217371056,
+                "edu4": 36.1829083711724,
+                "immS": 5.21306322039818,
+                "immN": 94.7869367796018
+            },
+            "33": {
+                "barcelona": 0.08313388,
+                "aturS": 3.68702941861368,
+                "aturN": 96.3129705813863,
+                "edu0": 2.46836916867189,
+                "edu2": 19.1725529767911,
+                "edu3": 24.2218427384926,
+                "edu1": 13.0870138942793,
+                "edu4": 28.4677481952961,
+                "immS": 4.98719242412482,
+                "immN": 95.0128075758752
+            },
+            "34": {
+                "barcelona": 1.51737825,
+                "aturS": 4.06787279469603,
+                "aturN": 95.932127205304,
+                "edu0": 3.11270929317901,
+                "edu2": 21.3282391279919,
+                "edu3": 22.3620631531633,
+                "edu1": 16.3164400494438,
+                "edu4": 24.6432183391392,
+                "immS": 5.31520395550062,
+                "immN": 94.6847960444994
+            },
+            "35": {
+                "barcelona": 0.31514399,
+                "aturS": 4.22327804173266,
+                "aturN": 95.7767219582673,
+                "edu0": 2.0671834625323,
+                "edu2": 20.288405434692,
+                "edu3": 25.045150176433,
+                "edu1": 13.6561918257342,
+                "edu4": 26.7261259759384,
+                "immS": 5.10405379122558,
+                "immN": 94.8959462087744
+            },
+            "36": {
+                "barcelona": 0.72772977,
+                "aturS": 4.89216201998948,
+                "aturN": 95.1078379800105,
+                "edu0": 1.65176223040505,
+                "edu2": 19.5476065228827,
+                "edu3": 23.5244608100999,
+                "edu1": 11.7517096265124,
+                "edu4": 26.6806943713835,
+                "immS": 2.97738032614413,
+                "immN": 97.0226196738559
+            },
+            "37": {
+                "barcelona": 1.48370533,
+                "aturS": 4.98382690073172,
+                "aturN": 95.0161730992683,
+                "edu0": 4.54416983324436,
+                "edu2": 27.3246867443394,
+                "edu3": 18.5346858022171,
+                "edu1": 22.6674622365983,
+                "edu4": 11.5064535376692,
+                "immS": 4.44053638162234,
+                "immN": 95.5594636183777
+            },
+            "38": {
+                "barcelona": 0.70336933,
+                "aturS": 4.27882507672074,
+                "aturN": 95.7211749232793,
+                "edu0": 3.79658044717229,
+                "edu2": 25.7781674704077,
+                "edu3": 20.7628233231039,
+                "edu1": 21.0434020166594,
+                "edu4": 15.7825515124945,
+                "immS": 4.48925909688733,
+                "immN": 95.5107409031127
+            },
+            "39": {
+                "barcelona": 3.14083236,
+                "aturS": 4.309969525468,
+                "aturN": 95.690030474532,
+                "edu0": 4.75983166448991,
+                "edu2": 24.0458569148164,
+                "edu3": 22.0287331301698,
+                "edu1": 19.7068640255406,
+                "edu4": 18.328254244667,
+                "immS": 5.60150921491801,
+                "immN": 94.398490785082
+            },
+            "40": {
+                "barcelona": 0.45291928,
+                "aturS": 4.18786692759296,
+                "aturN": 95.8121330724071,
+                "edu0": 5.40117416829746,
+                "edu2": 21.174168297456,
+                "edu3": 22.5636007827789,
+                "edu1": 16.3796477495108,
+                "edu4": 22.0547945205479,
+                "immS": 5.00978473581213,
+                "immN": 94.9902152641879
+            },
+            "41": {
+                "barcelona": 0.5861925,
+                "aturS": 4.18723715487292,
+                "aturN": 95.8127628451271,
+                "edu0": 2.39531907112818,
+                "edu2": 20.424209179009,
+                "edu3": 24.3188882793929,
+                "edu1": 15.5421466447248,
+                "edu4": 27.4456024867435,
+                "immS": 3.41927226183946,
+                "immN": 96.5807277381606
+            },
+            "42": {
+                "barcelona": 2.07476992,
+                "aturS": 2.97951582867784,
+                "aturN": 97.0204841713222,
+                "edu0": 3.7243947858473,
+                "edu2": 27.1880819366853,
+                "edu3": 24.0223463687151,
+                "edu1": 17.3184357541899,
+                "edu4": 29.9813780260708,
+                "immS": 7.26256983240224,
+                "immN": 92.7374301675978
+            },
+            "43": {
+                "barcelona": 1.01956175,
+                "aturS": 4.94451941820363,
+                "aturN": 95.0554805817964,
+                "edu0": 3.40005997900735,
+                "edu2": 21.0863697705803,
+                "edu3": 22.743289848553,
+                "edu1": 18.3385814964762,
+                "edu4": 20.3366321787374,
+                "immS": 4.22477133003449,
+                "immN": 95.7752286699655
+            },
+            "44": {
+                "barcelona": 1.80563325,
+                "aturS": 4.74570970642274,
+                "aturN": 95.2542902935773,
+                "edu0": 3.1781400258004,
+                "edu2": 22.9310816621711,
+                "edu3": 22.9858097806966,
+                "edu1": 17.626363316524,
+                "edu4": 19.6200304913803,
+                "immS": 4.1280637973496,
+                "immN": 95.8719362026504
+            },
+            "45": {
+                "barcelona": 0.96029494,
+                "aturS": 4.76751747683304,
+                "aturN": 95.232482523167,
+                "edu0": 4.23101934644773,
+                "edu2": 24.5854332628841,
+                "edu3": 21.9964233457974,
+                "edu1": 22.2971874491953,
+                "edu4": 15.6681840351162,
+                "immS": 5.68200292635344,
+                "immN": 94.3179970736466
+            },
+            "46": {
+                "barcelona": 1.5772001,
+                "aturS": 4.87977369165488,
+                "aturN": 95.1202263083451,
+                "edu0": 4.86048604860486,
+                "edu2": 24.5017358878745,
+                "edu3": 20.0977240581201,
+                "edu1": 22.2000771505722,
+                "edu4": 12.5884016973126,
+                "immS": 5.64485019930565,
+                "immN": 94.3551498006944
+            },
+            "47": {
+                "barcelona": 0.54881926,
+                "aturS": 4.61873638344227,
+                "aturN": 95.3812636165577,
+                "edu0": 4.0958605664488,
+                "edu2": 26.6230936819172,
+                "edu3": 15.2069716775599,
+                "edu1": 26.7538126361656,
+                "edu4": 7.79956427015251,
+                "immS": 2.48366013071895,
+                "immN": 97.516339869281
+            },
+            "48": {
+                "barcelona": 1.87970133,
+                "aturS": 5.78992539776854,
+                "aturN": 94.2100746022315,
+                "edu0": 3.85554895358817,
+                "edu2": 24.5395127748069,
+                "edu3": 21.7402786030237,
+                "edu1": 20.3010497128144,
+                "edu4": 15.8249158249158,
+                "immS": 3.25476992143659,
+                "immN": 96.7452300785634
+            },
+            "49": {
+                "barcelona": 2.52275543,
+                "aturS": 6.09512959270863,
+                "aturN": 93.9048704072914,
+                "edu0": 4.10139561378525,
+                "edu2": 27.9834804898889,
+                "edu3": 16.4483053261179,
+                "edu1": 25.4770720592424,
+                "edu4": 10.4386214753631,
+                "immS": 1.99373397892338,
+                "immN": 98.0062660210766
+            },
+            "50": {
+                "barcelona": 0.64638439,
+                "aturS": 5.92976396085204,
+                "aturN": 94.070236039148,
+                "edu0": 4.19625151922216,
+                "edu2": 28.3183010298727,
+                "edu3": 15.4992643766392,
+                "edu1": 27.3971726476044,
+                "edu4": 7.78481417514233,
+                "immS": 5.884986886714,
+                "immN": 94.115013113286
+            },
+            "51": {
+                "barcelona": 0.07018275,
+                "aturS": 5.78330893118594,
+                "aturN": 94.2166910688141,
+                "edu0": 4.62827395477469,
+                "edu2": 27.606962746055,
+                "edu3": 18.2772083943387,
+                "edu1": 25.1016756141207,
+                "edu4": 10.1594273629413,
+                "immS": 5.41727672035139,
+                "immN": 94.5827232796486
+            },
+            "52": {
+                "barcelona": 1.53063773,
+                "aturS": 5.01616276858718,
+                "aturN": 94.9838372314128,
+                "edu0": 5.07320783418901,
+                "edu2": 27.1952842745769,
+                "edu3": 19.0112188629017,
+                "edu1": 24.0235786271154,
+                "edu4": 10.5799581669519,
+                "immS": 4.58642327438677,
+                "immN": 95.4135767256132
+            },
+            "53": {
+                "barcelona": 0.93815469,
+                "aturS": 8.03320390949257,
+                "aturN": 91.9667960905074,
+                "edu0": 4.73959030660062,
+                "edu2": 28.9329227473557,
+                "edu3": 14.7944838666488,
+                "edu1": 26.1346900522158,
+                "edu4": 6.90855536216361,
+                "immS": 6.13201231757933,
+                "immN": 93.8679876824207
+            },
+            "54": {
+                "barcelona": 3.59079138,
+                "aturS": 6.06840750275837,
+                "aturN": 93.9315924972416,
+                "edu0": 3.16292754689224,
+                "edu2": 27.9882309672674,
+                "edu3": 12.9091577785951,
+                "edu1": 30.8201544685546,
+                "edu4": 7.2453107760206,
+                "immS": 3.49393159249724,
+                "immN": 96.5060684075027
+            },
+            "55": {
+                "barcelona": 0.9791049,
+                "aturS": 8.33896994878732,
+                "aturN": 91.6610300512127,
+                "edu0": 3.0920861919026,
+                "edu2": 28.7467388153445,
+                "edu3": 14.3395497149483,
+                "edu1": 30.6792926852836,
+                "edu4": 6.04889361290946,
+                "immS": 8.09740071504493,
+                "immN": 91.9025992849551
+            },
+            "56": {
+                "barcelona": 1.40957557,
+                "aturS": 7.41839762611276,
+                "aturN": 92.5816023738872,
+                "edu0": 4.3026706231454,
+                "edu2": 28.0415430267062,
+                "edu3": 11.2017804154303,
+                "edu1": 29.5994065281899,
+                "edu4": 7.49258160237389,
+                "immS": 5.1186943620178,
+                "immN": 94.8813056379822
+            },
+            "57": {
+                "barcelona": 1.9712226,
+                "aturS": 7.80259436262557,
+                "aturN": 92.1974056373744,
+                "edu0": 3.06251828733054,
+                "edu2": 26.0704184141227,
+                "edu3": 14.7956695601287,
+                "edu1": 27.0652491953575,
+                "edu4": 7.9488930069248,
+                "immS": 6.58343899346533,
+                "immN": 93.4165610065347
+            },
+            "58": {
+                "barcelona": 0.95924652,
+                "aturS": 4.52577725304998,
+                "aturN": 95.47422274695,
+                "edu0": 3.50255804801259,
+                "edu2": 29.9488390397481,
+                "edu3": 12.7508854781582,
+                "edu1": 28.3353010625738,
+                "edu4": 5.35222353404172,
+                "immS": 3.62062180243998,
+                "immN": 96.37937819756
+            },
+            "59": {
+                "barcelona": 1.58904113,
+                "aturS": 5.13864953783487,
+                "aturN": 94.8613504621651,
+                "edu0": 2.83565721447595,
+                "edu2": 26.0614131286229,
+                "edu3": 16.9512768290772,
+                "edu1": 22.7244242519192,
+                "edu4": 10.8726304245653,
+                "immS": 5.15431615227949,
+                "immN": 94.8456838477205
+            },
+            "60": {
+                "barcelona": 0.42498185,
+                "aturS": 4.6675349361118,
+                "aturN": 95.3324650638882,
+                "edu0": 2.11200675842163,
+                "edu2": 21.8803900172481,
+                "edu3": 23.8410362913161,
+                "edu1": 16.0917314935408,
+                "edu4": 21.7941497412792,
+                "immS": 3.45841106691541,
+                "immN": 96.5415889330846
+            },
+            "61": {
+                "barcelona": 0.93414601,
+                "aturS": 4.08457472369053,
+                "aturN": 95.9154252763095,
+                "edu0": 2.38896135099883,
+                "edu2": 22.6161872726025,
+                "edu3": 23.618452666987,
+                "edu1": 16.726161872726,
+                "edu4": 20.9789249673921,
+                "immS": 4.6474909040983,
+                "immN": 95.3525090959017
+            },
+            "62": {
+                "barcelona": 0.03311787,
+                "aturS": 4.08869430124991,
+                "aturN": 95.9113056987501,
+                "edu0": 2.86702916460702,
+                "edu2": 21.7569380693454,
+                "edu3": 23.8471859331968,
+                "edu1": 15.0836805310359,
+                "edu4": 22.0111574041381,
+                "immS": 4.25817385777841,
+                "immN": 95.7418261422216
+            },
+            "63": {
+                "barcelona": 0.43306089,
+                "aturS": 4.04823428079242,
+                "aturN": 95.9517657192076,
+                "edu0": 2.16691599800535,
+                "edu2": 21.4832948003083,
+                "edu3": 24.2758057935537,
+                "edu1": 15.4993426719253,
+                "edu4": 23.1107484473458,
+                "immS": 4.47889750215332,
+                "immN": 95.5211024978467
+            },
+            "64": {
+                "barcelona": 2.90123659,
+                "aturS": 4.52282265842913,
+                "aturN": 95.4771773415709,
+                "edu0": 2.03331508563385,
+                "edu2": 20.1897760746592,
+                "edu3": 23.5577800370168,
+                "edu1": 14.5799118896796,
+                "edu4": 27.1812517921848,
+                "immS": 5.73759808138474,
+                "immN": 94.2624019186153
+            },
+            "65": {
+                "barcelona": 2.21963748,
+                "aturS": 4.40191387559809,
+                "aturN": 95.5980861244019,
+                "edu0": 1.96172248803828,
+                "edu2": 21.4501288185499,
+                "edu3": 23.0253956569746,
+                "edu1": 14.9098270150902,
+                "edu4": 23.6253220463747,
+                "immS": 4.79205005520795,
+                "immN": 95.2079499447921
+            },
+            "66": {
+                "barcelona": 0.63824368,
+                "aturS": 3.91973244147157,
+                "aturN": 96.0802675585284,
+                "edu0": 1.82608695652174,
+                "edu2": 18.4481605351171,
+                "edu3": 22.876254180602,
+                "edu1": 13.9464882943144,
+                "edu4": 31.3377926421405,
+                "immS": 6.41471571906355,
+                "immN": 93.5852842809365
+            },
+            "67": {
+                "barcelona": 0.14153727,
+                "aturS": 4.15822582364858,
+                "aturN": 95.8417741763514,
+                "edu0": 0.57575434481288,
+                "edu2": 11.3871414862992,
+                "edu3": 20.1620641859473,
+                "edu1": 4.98987098837829,
+                "edu4": 43.9812346732061,
+                "immS": 4.37146817357927,
+                "immN": 95.6285318264207
+            },
+            "68": {
+                "barcelona": 1.62166563,
+                "aturS": 3.9831163426669,
+                "aturN": 96.0168836573331,
+                "edu0": 1.94399857321206,
+                "edu2": 17.8705189941145,
+                "edu3": 21.3245348076809,
+                "edu1": 13.1294215563878,
+                "edu4": 28.2979608822305,
+                "immS": 5.24641816776648,
+                "immN": 94.7535818322335
+            },
+            "69": {
+                "barcelona": 1.96382196,
+                "aturS": 4.47650208209399,
+                "aturN": 95.523497917906,
+                "edu0": 1.74747174301011,
+                "edu2": 14.9167162403331,
+                "edu3": 19.9583581201666,
+                "edu1": 10.2543129089828,
+                "edu4": 32.7409280190363,
+                "immS": 5.80011897679952,
+                "immN": 94.1998810232005
+            },
+            "70": {
+                "barcelona": 1.14124063,
+                "aturS": 5.92156188182678,
+                "aturN": 94.0784381181732,
+                "edu0": 4.29603509073708,
+                "edu2": 26.2406467704481,
+                "edu3": 16.1133568418337,
+                "edu1": 27.0491098305668,
+                "edu4": 9.98537885955104,
+                "immS": 8.66947621914509,
+                "immN": 91.3305237808549
+            },
+            "71": {
+                "barcelona": 0.82042281,
+                "aturS": 4.67842017137792,
+                "aturN": 95.3215798286221,
+                "edu0": 2.53619619816803,
+                "edu2": 22.7223480744607,
+                "edu3": 22.0181227223481,
+                "edu1": 16.9900522013198,
+                "edu4": 21.3631438983552,
+                "immS": 4.79661183886536,
+                "immN": 95.2033881611346
+            },
+            "72": {
+                "barcelona": 2.86232154,
+                "aturS": 5.0885631394106,
+                "aturN": 94.9114368605894,
+                "edu0": 3.20277905023668,
+                "edu2": 23.9044128874637,
+                "edu3": 21.4002137730951,
+                "edu1": 19.9267063673843,
+                "edu4": 16.918613528783,
+                "immS": 4.09604519774011,
+                "immN": 95.9039548022599
+            },
+            "73": {
+                "barcelona": 2.54785594,
+                "aturS": 5.20456347154724,
+                "aturN": 94.7954365284528,
+                "edu0": 4.02922827697929,
+                "edu2": 25.6815910109261,
+                "edu3": 19.9875917692069,
+                "edu1": 23.0724158136008,
+                "edu4": 12.011856753869,
+                "immS": 4.27394616206528,
+                "immN": 95.7260538379347
+            },
+            "0": {
+                "barcelona": 1,
+                "aturS": 4.23964264767826,
+                "aturN": 95.7603573523217,
+                "edu0": 2.20304770762038,
+                "edu2": 18.8720065174985,
+                "edu3": 21.8390471427047,
+                "edu1": 14.9898148667792,
+                "edu4": 27.7440192021985,
+                "immS": 6.00222882660975,
+                "immN": 93.9977711733902
+            }
+        }
+
+    };
+
+    function computeData(opcions) {
+        if (opcions.c1 === "donaS") {
+            var obj = dades.dona;
+        } else if (opcions.c1 === "donaN") {
+            var obj = dades.home;
+        } else {
+            var obj = dades.tots;
+        }
+
+        var probCaracBcn = 1;
+        console.log("pas1", probCaracBcn);
+        for (i = 0; i < Object.keys(obj).length; i++) {
+            var barri = obj[Object.keys(obj)[i]];
+
+            var probCaracBarri = 1;
+            console.log("pas2", probCaracBarri);
+            // let variables = obj[barri];
+            for (a = 0; a < Object.keys(opcions).length; a++) {
+                var c = Object.keys(opcions)[a];
+                var val = opcions[c];
+                probCaracBarri *= barri[val];
+                if (i == 0) {
+                    probCaracBcn *= barri[val];
+                }
+
+            }
+            var probBarri = barri.barcelona;
+            var bayes = probCaracBarri * probBarri / probCaracBcn;
+            if (i > 9) {
+                dataMapa[i] = bayes;
+            } else {
+                var code = ["0", i].join("");
+                dataMapa[code] = bayes;
+            }
+            if (i == 1) {
+                console.log(probCaracBarri + " * " + probBarri + " / " + probCaracBcn + " = " + bayes)
+            }
+        }
+
+        d3.json("https://cdn.rawgit.com/martgnz/bcn-geodata/master/barris/barris_geo.json", function (error, bcn) {
+            // console.log("dataMapa", dataMapa);
+            var dataMapaList = Object.values(dataMapa);
+            // console.log(Object.keys(dataMapa));
+            if (dataMapaList.length > 0) {
+                var quartils = math.quantileSeq(dataMapaList, [1 / 4, 2 / 4, 3 / 4]);
+                // console.log("quartils: ", quartils);
+            }
+            $("svg").html("");
+            svg.selectAll('.barris')
+                .data(bcn.features)
+                .enter()
+                .append('path')
+                .attr('class', 'barris pintats')
+                .attr('d', path)
+                .attr("fill", function (d) {
+                    var codi = d.properties.C_Barri;
+                    var value = dataMapa[codi];
+                    // console.log(codi, value);
+                    if (value < quartils[0]) {
+                        return "#FFCFCB";
+                    } else if (value > quartils[0] && value < quartils[1]) {
+                        return "#D6736B";  //8B231B
+                    } else if (value > quartils[1] && value < quartils[2]) {
+                        return "#75160F";
+                    } else {
+                            return "#260300";
+                        }
+                })
+                .on('mouseover', function (d) {
+                    var name = d.properties.N_Barri;
+                    var codi = d.properties.C_Barri;
+                    var homes = d.properties.Homes;
+                    var dones = d.properties.Dones;
+                    var p = homes + dones;
+                    var pob = "Població: " + p + " habitants";
+                    var a = document.getElementById('name').innerHTML = name;
+                    var b = document.getElementById('num').innerHTML = pob;
+                    // var c = document.getElementById('val').innerHTML = dataMapa[codi];
+                    return [a, b, c];
+                });
+
+        });
+
+    }
+
+</script>
+</body>
+</html>
